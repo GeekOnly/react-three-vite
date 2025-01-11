@@ -1,89 +1,31 @@
-import React, { Suspense, useRef, useState, useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, MeshReflectorMaterial,Box } from "@react-three/drei";
-import { EffectComposer, Bloom, DepthOfField } from '@react-three/postprocessing';
-import { Model } from "./Comuputer";
+import { suspend } from 'suspend-react'
+import { Canvas,useFrame } from "@react-three/fiber";
+import { useGLTF, MeshReflectorMaterial,BakeShadows } from "@react-three/drei";
+import { EffectComposer, Bloom, DepthOfField, ToneMapping } from '@react-three/postprocessing';
+import { easing } from 'maath'
+//import { Instances, Model } from "./ComputerA";
+import {Instances, Computers } from "./Computers";
 
-import * as dat from 'dat.gui'; // ใช้ dat.GUI สำหรับ Debug UI
+const suzi = import('@pmndrs/assets/models/bunny.glb')
 
-const DebugUI = ({ bloomEffect, setBloomEffect, depthEffect, setDepthEffect, cameraPosition, setCameraPosition }) => {
-    const gui = useRef(null);
-  
-    useEffect(() => {
-      // Only create the GUI if it hasn't been created yet
-      if (!gui.current) {
-        gui.current = new dat.GUI();
-        gui.current.add(bloomEffect, 'intensity', 0, 10).name('Bloom Intensity').onChange(value => {
-          setBloomEffect(prev => ({ ...prev, intensity: value }));
-        });
-
-        // Depth of Field Controllers
-        gui.current.add(depthEffect, 'focalLength', 0, 1).name('Focal Length').onChange(value => {
-          setDepthEffect(prev => ({ ...prev, focalLength: value }));
-        });
-        gui.current.add(depthEffect, 'bokehScale', 1, 50).name('Bokeh Scale').onChange(value => {
-          setDepthEffect(prev => ({ ...prev, bokehScale: value }));
-        });
-        gui.current.add(depthEffect, 'blur', 0, 2).name('Blur').onChange(value => {
-          setDepthEffect(prev => ({ ...prev, blur: value }));
-        });
-
-        // การควบคุมตำแหน่งของ Camera
-        const cameraFolder = gui.current.addFolder('Camera Position');
-        cameraFolder.add(cameraPosition, 'x', -10, 10).name('Position X').onChange(value => {
-          setCameraPosition(prev => ({ ...prev, x: value }));
-        });
-        cameraFolder.add(cameraPosition, 'y', -10, 10).name('Position Y').onChange(value => {
-          setCameraPosition(prev => ({ ...prev, y: value }));
-        });
-        cameraFolder.add(cameraPosition, 'z', -10, 20).name('Position Z').onChange(value => {
-          setCameraPosition(prev => ({ ...prev, z: value }));
-        });
-        cameraFolder.open(); // เปิด folder ของ Camera Position โดยอัตโนมัติ
-      }
-  
-      // Cleanup the GUI when the component is unmounted
-      return () => {
-        if (gui.current && gui.current.GUI) {
-          gui.current.destroy();
-        }
-      };
-    }, [bloomEffect, setBloomEffect, depthEffect, setDepthEffect, cameraPosition, setCameraPosition]);
-  
-    return null;
-  };
-
-  const SceneContainer = () => {
-    const cameraRef = useRef();
-    const [bloomEffect, setBloomEffect] = useState({ intensity: 5 });
-    const [depthEffect, setDepthEffect] = useState({ focalLength: 0.3, bokehScale: 15, blur: 1 });
-    const [cameraPosition, setCameraPosition] = useState({ x: -1.5, y: 1, z: 8 });
-  
-    useEffect(() => {
-      console.log("Bloom Effect: ", bloomEffect); // ตรวจสอบค่าใน console
-    }, [bloomEffect, depthEffect,cameraPosition]);
-  
+const SceneContainer = () => {
     return (
       <div style={{ height: '100vh', width: '100%', backgroundColor: '#202020' }}>
-        <Canvas 
-          shadows 
-          dpr={[1, 1.5]} 
-          camera={{ position: [-1.5, 1, 5.5], fov: 45, near: 1, far: 20 }} 
-          ref={cameraRef}
-        >
-          <color attach="background" args={['#202020']} />
-          <ambientLight intensity={0.3} />
-          <hemisphereLight intensity={0.15} groundColor="black" />
-          <spotLight position={[10, 20, 10]} angle={0.12} penumbra={1} intensity={1} castShadow shadow-mapSize={1024} />
-  
-          <Suspense fallback={null}>
-            <Model scale={0.75} position={[0,-2,0]} />
-          </Suspense>
+         <Canvas shadows dpr={[1, 1.5]} camera={{ position: [-1.5, 1, 5.5], fov: 45, near: 1, far: 20 }} eventSource={document.getElementById('root')} eventPrefix="client">
 
-          
+       {/* Lights */}
+      <color attach="background" args={['black']} />
+      <hemisphereLight intensity={0.15} groundColor="black" />
+      <spotLight decay={0} position={[10, 20, 10]} angle={0.12} penumbra={1} intensity={1} castShadow shadow-mapSize={1024} />
+  
+      {/* Main scene */}
+         <group position={[-0, -1.25, 0]} rotation={[0, -Math.PI * 0.08, 0]}>
+         <Instances>
+                <Computers scale={.70}/>
+         </Instances>  
 
            {/* Plane reflections + distance blur */}
-           <mesh receiveShadow position={[-0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+           <mesh receiveShadow position={[-0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[50, 50]}/>
           <MeshReflectorMaterial
             blur={[300, 30]}
@@ -98,30 +40,39 @@ const DebugUI = ({ bloomEffect, setBloomEffect, depthEffect, setDepthEffect, cam
             metalness={0.8}
           />
            </mesh>
+           {/* Bunny and a light give it more realism */}
+           <Bun scale={0.4} position={[0, 0.3, 0.5]} rotation={[0, -Math.PI * 0.85, 0]} />
+           <pointLight distance={1.5} intensity={1} position={[-0.15, 0.7, 0]} color="orange" />
+        </group>
 
-          <EffectComposer disableNormalPass>
-            <Bloom 
-              luminanceThreshold={0} mipmapBlur luminanceSmoothing={0.0} intensity={bloomEffect.intensity}  // ส่งค่าที่อัปเดตจาก state
-            />
-            <DepthOfField 
-            focalLength={depthEffect.focalLength} 
-            bokehScale={depthEffect.bokehScale} 
-            blur={depthEffect.blur}
-          />
-          </EffectComposer>
-  
-          <DebugUI 
-          bloomEffect={bloomEffect} 
-          setBloomEffect={setBloomEffect}
-          depthEffect={depthEffect} 
-          setDepthEffect={setDepthEffect}
-          cameraPosition={cameraPosition}
-          setCameraPosition={setCameraPosition}
-        />
+          {/* Postprocessing */}
+         <EffectComposer disableNormalPass>
+         <Bloom luminanceThreshold={0} mipmapBlur luminanceSmoothing={0.0} intensity={5} />
+         <DepthOfField target={[0, 0, 13]} focalLength={0.3} bokehScale={15} height={700} />
+         </EffectComposer>
 
+        <CameraRig />
+        <BakeShadows />
         </Canvas>
       </div>
     );
   };
 
 export default SceneContainer;
+
+function Bun(props) {
+    const { nodes } = useGLTF(suspend(suzi).default)
+    console.log(nodes)
+    return (
+      <mesh receiveShadow castShadow geometry={nodes.mesh.geometry} {...props}>
+        <meshStandardMaterial color="#222" roughness={0.5} />
+      </mesh>
+    )
+  }
+
+function CameraRig() {
+    useFrame((state, delta) => {
+      easing.damp3(state.camera.position, [-1 + (state.pointer.x * state.viewport.width) / 3, (1 + state.pointer.y) / 2, 5.5], 0.5, delta)
+      state.camera.lookAt(0, 0, 0)
+    })
+  }
