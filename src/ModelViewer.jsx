@@ -19,9 +19,9 @@ const SceneContainer = () => {
       <spotLight decay={0} position={[10, 20, 10]} angle={0.12} penumbra={1} intensity={1} castShadow shadow-mapSize={1024} />
   
       {/* Main scene */}
-         <group position={[-0, -1.25, 0]} rotation={[0, -Math.PI * 0.08, 0]}>
+         <group position={[-0, -1.25, 0]} rotation={[0, -Math.PI * 0.2, 0]}>
          <Instances>
-                <Computers scale={.70}/>
+                <Computers scale={.7}/>
          </Instances>  
 
            {/* Plane reflections + distance blur */}
@@ -50,9 +50,8 @@ const SceneContainer = () => {
          <Bloom luminanceThreshold={0} mipmapBlur luminanceSmoothing={0.0} intensity={5} />
          <DepthOfField target={[0, 0, 13]} focalLength={0.3} bokehScale={15} height={700} />
          </EffectComposer>
-
-        <CameraRig />
-        <BakeShadows />
+         <CameraRig />        
+         <BakeShadows />
         </Canvas>
       </div>
     );

@@ -1,8 +1,9 @@
 import * as THREE from 'three'
 import { useMemo, useContext, createContext, useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useFrame,useLoader  } from '@react-three/fiber'
 import { useGLTF, Merged, RenderTexture, PerspectiveCamera, Text } from '@react-three/drei'
 import { SpinningBox } from './SpinningBox'
+import GifLoader from "three-gif-loader";
 THREE.ColorManagement.legacyMode = false
 
 /*
@@ -150,14 +151,14 @@ export function Computers(props) {
       <instances.Object36 position={[-5.25, 4.29, -1.47]} rotation={[0, 1.25, 0]} />
       <mesh castShadow receiveShadow geometry={n.Object_204.geometry} material={m.Texture} position={[3.2, 4.29, -3.09]} rotation={[-Math.PI, 0.56, 0]} scale={-1} />
       <ScreenInteractive frame="Object_206" panel="Object_207" position={[0.27, 1.53, -2.61]} />
-      <ScreenText frame="Object_209" panel="Object_210" y={5} position={[-1.43, 2.5, -1.8]} rotation={[0, 1, 0]} />
-      <ScreenText invert frame="Object_212" panel="Object_213" x={-5} y={5} position={[-2.73, 0.63, -0.52]} rotation={[0, 1.09, 0]} />
-      <ScreenText invert frame="Object_215" panel="Object_216" position={[1.84, 0.38, -1.77]} rotation={[0, -Math.PI / 9, 0]} />
-      <ScreenText invert frame="Object_218" panel="Object_219" x={-5} position={[3.11, 2.15, -0.18]} rotation={[0, -0.79, 0]} scale={0.81} />
-      <ScreenText frame="Object_221" panel="Object_222" y={5} position={[-3.42, 3.06, 1.3]} rotation={[0, 1.22, 0]} scale={0.9} />
-      <ScreenText invert frame="Object_224" panel="Object_225" position={[-3.9, 4.29, -2.64]} rotation={[0, 0.54, 0]} />
-      <ScreenText frame="Object_227" panel="Object_228" position={[0.96, 4.28, -4.2]} rotation={[0, -0.65, 0]} />
-      <ScreenText frame="Object_230" panel="Object_231" position={[4.68, 4.29, -1.56]} rotation={[0, -Math.PI / 3, 0]} />
+      <ScreenText frame="Object_209" panel="Object_210"  setgifPath="/gif/A.gif" y={5} position={[-1.43, 2.5, -1.8]} rotation={[0, 1, 0]} />
+      <ScreenText frame="Object_212" panel="Object_213"  setgifPath="/gif/B.gif" x={-5} y={5} position={[-2.73, 0.63, -0.52]} rotation={[0, 1.09, 0]} />
+      <ScreenText frame="Object_215" panel="Object_216"  setgifPath="/gif/C.gif" position={[1.84, 0.38, -1.77]} rotation={[0, -Math.PI / 9, 0]} />
+      <ScreenText frame="Object_218" panel="Object_219"  setgifPath="/gif/D.gif" x={-5} position={[3.11, 2.15, -0.18]} rotation={[0, -0.79, 0]} scale={0.81} />
+      <ScreenText frame="Object_221" panel="Object_222"  setgifPath="/gif/E.gif" y={5} position={[-3.42, 3.06, 1.3]} rotation={[0, 1.22, 0]} scale={0.9} />
+      <ScreenText frame="Object_224" panel="Object_225"  setgifPath="/gif/F.gif" position={[-3.9, 4.29, -2.64]} rotation={[0, 0.54, 0]} />
+      <ScreenText frame="Object_227" panel="Object_228"  setgifPath="/gif/G.gif" position={[0.96, 4.28, -4.2]} rotation={[0, -0.65, 0]} />
+      <ScreenText frame="Object_230" panel="Object_231"  setgifPath="/gif/H.gif" position={[4.68, 4.29, -1.56]} rotation={[0, -Math.PI / 3, 0]} />
       <Leds instances={instances} />
     </group>
   )
@@ -165,36 +166,61 @@ export function Computers(props) {
 
 /* This component renders a monitor (taken out of the gltf model)
    It renders a custom scene into a texture and projects it onto monitors screen */
-function Screen({ frame, panel, children, ...props }) {
-  const { nodes, materials } = useGLTF('/computers_1-transformed.glb')
+function Screen({ frame, panel, children, isUseTexture = true, gifPath = "./CAT.gif", ...props }) {
+  const { nodes, materials } = useGLTF('/computers_1-transformed.glb');
+  
+  const loader = new GifLoader();
+  const texture = loader.load(
+    gifPath, 
+    // onLoad callback
+    reader => {
+        // You probably don't need to set onLoad, as it is handled for you. However,
+        // if you want to manipulate the reader, you can do so here:
+        console.log(reader.numFrames());
+    },
+    // onProgress callback
+    xhr => {
+        console.log(`${(xhr.loaded / xhr.total) * 100}% loaded`);
+    },
+    // onError callback
+    () => {
+        console.error("An error happened.");
+    },);
+  //const darkenedColor = new THREE.Color(0x555555); // ปรับเป็นสีที่หมองลง
+  const colorValue = .7;
+  const darkenedColor = new THREE.Color(colorValue, colorValue, colorValue); // Dark gray
   return (
     <group {...props}>
       <mesh castShadow receiveShadow geometry={nodes[frame].geometry} material={materials.Texture} />
       <mesh geometry={nodes[panel].geometry}>
-        <meshBasicMaterial toneMapped={false}>
-          <RenderTexture width={512} height={512} attach="map" anisotropy={16}>
+       {
+          isUseTexture ? (
+            <meshBasicMaterial toneMapped={false} map={texture} color={darkenedColor} />
+          ) : (
+            <meshBasicMaterial toneMapped={false}>
+            <RenderTexture width={512} height={512} attach="map" anisotropy={16}>
             {children}
-          </RenderTexture>
-        </meshBasicMaterial>
+            </RenderTexture>
+            </meshBasicMaterial>
+          )
+        }
       </mesh>
     </group>
   )
 }
 
 /* Renders a monitor with some text */
-function ScreenText({ invert, x = 0, y = 1.2, ...props }) {
+function ScreenText({ invert, x = 0, y = 1.2, setgifPath="./CAT.gif", ...props }) {
   const textRef = useRef()
-  const rand = Math.random() * 10000
-  useFrame((state) => (textRef.current.position.x = x + Math.sin(rand + state.clock.elapsedTime / 4) * 8))
   return (
-    <Screen {...props}>
+    <Screen {...props} gifPath={setgifPath} >
+      isUseTexture={true},
       <PerspectiveCamera makeDefault manual aspect={1 / 1} position={[0, 0, 15]} />
       <color attach="background" args={[invert ? 'black' : '#35c19f']} />
-      <ambientLight intensity={0.5} />
+
+      {/* Ambient and directional lighting */}
+      <ambientLight intensity={2} />
       <directionalLight position={[10, 10, 5]} />
-      <Text font="/Inter-Medium.woff" position={[x, y, 0]} ref={textRef} fontSize={4} letterSpacing={-0.1} color={!invert ? 'black' : '#35c19f'}>
-        SANPHET.
-      </Text>
     </Screen>
   )
 }
@@ -202,13 +228,13 @@ function ScreenText({ invert, x = 0, y = 1.2, ...props }) {
 /* Renders a monitor with a spinning box */
 function ScreenInteractive(props) {
   return (
-    <Screen {...props}>
+    <Screen {...props} isUseTexture={false}>
       <PerspectiveCamera makeDefault manual aspect={1 / 1} position={[0, 0, 10]} />
       <color attach="background" args={['orange']} />
       <ambientLight intensity={Math.PI / 2} />
       <pointLight decay={0} position={[10, 10, 10]} intensity={Math.PI} />
       <pointLight decay={0} position={[-10, -10, -10]} />
-      <SpinningBox position={[-3.15, 0.75, 0]} scale={0.5} />
+      <SpinningBox position={[0, -0.75, 0]} scale={2.5} />
     </Screen>
   )
 }
