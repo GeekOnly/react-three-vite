@@ -31,3 +31,8 @@ body {
   color: black;
   -webkit-font-smoothing: antialiased;
 }
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/path/to/Inter-Medium.woff') format('woff');
+}
