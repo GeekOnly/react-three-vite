@@ -3,8 +3,8 @@ import { Canvas,useFrame } from "@react-three/fiber";
 import { useGLTF, MeshReflectorMaterial,BakeShadows } from "@react-three/drei";
 import { EffectComposer, Bloom, DepthOfField, ToneMapping } from '@react-three/postprocessing';
 import { easing } from 'maath'
-//import { Instances, Model } from "./ComputerA";
 import {Instances, Computers } from "./Computers";
+import CameraRig from './CameraRigController';
 
 const suzi = import('@pmndrs/assets/models/bunny.glb')
 
@@ -68,11 +68,4 @@ function Bun(props) {
         <meshStandardMaterial color="#222" roughness={0.5} />
       </mesh>
     )
-  }
-
-function CameraRig() {
-    useFrame((state, delta) => {
-      easing.damp3(state.camera.position, [-1 + (state.pointer.x * state.viewport.width) / 3, (1 + state.pointer.y) / 2, 5.5], 0.5, delta)
-      state.camera.lookAt(0, 0, 0)
-    })
   }
