@@ -19,7 +19,7 @@ const SceneContainer = () => {
       <spotLight decay={0} position={[10, 20, 10]} angle={0.12} penumbra={1} intensity={1} castShadow shadow-mapSize={1024} />
   
       {/* Main scene */}
-         <group position={[-0, -1.25, 0]} rotation={[0, -Math.PI * 0.2, 0]}>
+         <group position={[-0, -1.25, 0]} rotation={[0, -Math.PI * -.02, 0]}>
          <Instances>
                 <Computers scale={.7}/>
          </Instances>  

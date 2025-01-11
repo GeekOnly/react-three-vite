@@ -152,13 +152,13 @@ export function Computers(props) {
       <mesh castShadow receiveShadow geometry={n.Object_204.geometry} material={m.Texture} position={[3.2, 4.29, -3.09]} rotation={[-Math.PI, 0.56, 0]} scale={-1} />
       <ScreenInteractive frame="Object_206" panel="Object_207" position={[0.27, 1.53, -2.61]} />
       <ScreenText frame="Object_209" panel="Object_210"  setgifPath="/gif/A.gif" y={5} position={[-1.43, 2.5, -1.8]} rotation={[0, 1, 0]} />
-      <ScreenText frame="Object_212" panel="Object_213"  setgifPath="/gif/B.gif" x={-5} y={5} position={[-2.73, 0.63, -0.52]} rotation={[0, 1.09, 0]} />
-      <ScreenText frame="Object_215" panel="Object_216"  setgifPath="/gif/C.gif" position={[1.84, 0.38, -1.77]} rotation={[0, -Math.PI / 9, 0]} />
-      <ScreenText frame="Object_218" panel="Object_219"  setgifPath="/gif/D.gif" x={-5} position={[3.11, 2.15, -0.18]} rotation={[0, -0.79, 0]} scale={0.81} />
-      <ScreenText frame="Object_221" panel="Object_222"  setgifPath="/gif/E.gif" y={5} position={[-3.42, 3.06, 1.3]} rotation={[0, 1.22, 0]} scale={0.9} />
-      <ScreenText frame="Object_224" panel="Object_225"  setgifPath="/gif/F.gif" position={[-3.9, 4.29, -2.64]} rotation={[0, 0.54, 0]} />
-      <ScreenText frame="Object_227" panel="Object_228"  setgifPath="/gif/G.gif" position={[0.96, 4.28, -4.2]} rotation={[0, -0.65, 0]} />
-      <ScreenText frame="Object_230" panel="Object_231"  setgifPath="/gif/H.gif" position={[4.68, 4.29, -1.56]} rotation={[0, -Math.PI / 3, 0]} />
+      <ScreenText frame="Object_212" panel="Object_213"  setgifPath="/gif/C.gif" x={-5} y={5} position={[-2.73, 0.63, -0.52]} rotation={[0, 1.09, 0]} />
+      <ScreenText frame="Object_215" panel="Object_216"  setgifPath="/gif/E.gif" position={[1.84, 0.38, -1.77]} rotation={[0, -Math.PI / 9, 0]} />
+      <ScreenText frame="Object_218" panel="Object_219"  setgifPath="/gif/F.gif" x={-5} position={[3.11, 2.15, -0.18]} rotation={[0, -0.79, 0]} scale={0.81} />
+      <ScreenText frame="Object_221" panel="Object_222"  setgifPath="/gif/G.gif" y={5} position={[-3.42, 3.06, 1.3]} rotation={[0, 1.22, 0]} scale={0.9} />
+      <ScreenText frame="Object_224" panel="Object_225"  setgifPath="/gif/H.gif" position={[-3.9, 4.29, -2.64]} rotation={[0, 0.54, 0]} />
+      <ScreenText frame="Object_227" panel="Object_228"  setgifPath="/gif/I.gif" position={[0.96, 4.28, -4.2]} rotation={[0, -0.65, 0]} />
+      <ScreenText frame="Object_230" panel="Object_231"  setgifPath="/gif/L.gif" position={[4.68, 4.29, -1.56]} rotation={[0, -Math.PI / 3, 0]} />
       <Leds instances={instances} />
     </group>
   )
