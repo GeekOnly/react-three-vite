@@ -36,3 +36,85 @@ body {
   font-family: 'Inter';
   src: url('/path/to/Inter-Medium.woff') format('woff');
 }
+
+@font-face {
+  font-family: "Persona 5 Menu Font Prototype";
+  src: local("Persona 5 Menu Font Prototype"),
+       url("/path/to/Persona5MenuFontPrototype-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;  /* Optional: Makes text visible while font loads */
+}
+
+vertical-menu {
+  height: 100vh;
+  width: 80px;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vertical-menu .menu-item,
+.vertical-menu .footer-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  color: gray;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.vertical-menu .menu-item:hover,
+.vertical-menu .footer-icon:hover {
+  color: cyan;
+}
+
+.vertical-menu .logo {
+  font-size: 2rem;
+  color: white;
+  margin-top: 20px;
+}
+
+.header {
+  background-color: #a4c991;
+  position: 'absolute';
+  padding: 10px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.underlay-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-display {
+  font-size: 24px;
+  font-weight: bold;
+  display: inline-block;
+  transition: opacity 0.5s ease;
+}
+
+.fade-text {
+  opacity: 0;
+  animation: fadeInOut 2s infinite;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
