@@ -1,0 +1,106 @@
+/* Container Styles */
+.about-me-container {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Grid Styles */
+  .about-me-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    grid-template-rows: repeat(5, auto);  /* 5 rows */
+    gap: 16px; /* Gap between grid items */
+  }
+  
+  @media (max-width: 768px) {
+    .about-me-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+      grid-template-rows: auto; /* Adjust rows dynamically */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .about-me-grid {
+      grid-template-columns: 1fr; /* 1 column on extra small screens */
+      gap: 8px; /* Reduce gap */
+    }
+  }
+  
+  /* Common Item Styles */
+  .about-me-item {
+    background-color: #292524; /* Dark charcoal */
+    color: #fff7ed;           /* Soft orange text */
+    border-radius: 12px;       /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 16px;
+    overflow: hidden;
+  }
+  
+  /* Section-Specific Colors */
+  .about-me-intro {
+    background-color: #f97316; /* Vibrant orange */
+  }
+  
+  .about-me-skills {
+    background-color: #d97706; /* Darker orange */
+  }
+  
+  .about-me-work {
+    background-color: #ea580c; /* Deep orange */
+  }
+  
+  .about-me-projects {
+    background-color: #92400e; /* Brownish orange */
+  }
+  
+  .about-me-education {
+    background-color: #78350f; /* Dark brown */
+  }
+  
+  .about-me-interests {
+    background-color: #f59e0b; /* Bright golden orange */
+  }
+  
+  .about-me-goals {
+    background-color: #b45309; /* Muted orange */
+  }
+  
+  .about-me-contact {
+    background-color: #6d28d9; /* Purple accent for contrast */
+  }
+  
+  /* Typography */
+  h2, h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #fff7ed; /* Soft orange */
+  }
+  
+  p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #f3f4f6; /* Light gray */
+  }
+  
+  /* Links */
+  a {
+    color: #f97316; /* Vibrant orange link color */
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  
+  a:hover {
+    color: #ea580c; /* Darker orange on hover */
+  }
+  
+  /* Image Styles */
+  img {
+    border-radius: 50%;
+    border: 4px solid #f97316; /* Vibrant orange border */
+    width: 75%;
+    height: auto;
+    object-fit: cover;
+  }
+  

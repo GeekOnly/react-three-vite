@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
 }
@@ -9,7 +13,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #272727;
+  background-color: #141414;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -37,14 +41,6 @@ body {
   src: url('/path/to/Inter-Medium.woff') format('woff');
 }
 
-@font-face {
-  font-family: "Persona 5 Menu Font Prototype";
-  src: local("Persona 5 Menu Font Prototype"),
-       url("/path/to/Persona5MenuFontPrototype-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;  /* Optional: Makes text visible while font loads */
-}
 
 vertical-menu {
   height: 100vh;

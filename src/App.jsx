@@ -1,15 +1,15 @@
-import React from "react";
-import ModelViewer from "./ModelViewer";
-import App2 from "./ModelRender2";
+import React from 'react';
+import StyledThreeName from './StyledThreeName';
+import SceneContainer from './ModelViewer';
+import Hud from './HudOverlay';
+import { HPLevel } from './Overlay'
 
-
-function App() {
+const App = () => {
   return (
     <div>
-      
-      <ModelViewer />
+      <SceneContainer />
     </div>
   );
-}
+};
 
 export default App;

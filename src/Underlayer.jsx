@@ -1,42 +1,5 @@
 import styled ,{ keyframes } from 'styled-components'
 import React, { useState, useEffect } from 'react';
-import './styles.css';
-import Intro from './intro';
-
-const TopLeft = styled.div`
-  position: absolute;
-  color: #F98404;
-  opacity: 0.55;
-  bottom: 12vw;
-  left: 3vw;
-  font-family: 'Inter';
-  letter-spacing: 1em;
-  font-weight: 700;
-  font-size: 2em;
-  line-height: 0.9em;
-  
-`
-const TopMidLeft = styled.div`
-  position: absolute;
-  color: #F7FD04;
-  bottom: 7vw;
-  left: 2vw;
-  font-family: 'Poppins', sans-serif;  
-  font-weight: 700;
-  font-size: 6em;
-  line-height: 0.9em;
-  
-`
-
-const BottomLeft = styled.div`
-  position: absolute;
-  bottom: 1vw;
-  left: 2vw;
-  font-family: 'Poppins', sans-serif;  
-  font-weight: 900;
-  font-size: 2em;
-  line-height: 0.9em;
-`
 
 const BottomRight = styled.div`
   position: absolute;
@@ -126,7 +89,7 @@ const MenuItem = styled.a`
 
   &:focus {
     color:rgb(160, 255, 71); /* เปลี่ยนสีเมื่อได้รับ focus */
-    background-color: rgba(178, 15, 243, 0.92); /* เพิ่มพื้นหลัง */
+    background-color: rgba(178, 15, 243, 0); /* เพิ่มพื้นหลัง */
   }
 `;
 
@@ -136,8 +99,7 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(15, 15, 15, 0.95);
-  color: white;
+  background: rgba(15, 15, 15, 0.64);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -160,24 +122,6 @@ const slideColor = keyframes`
   100% {
     background-color: #FF5733;  // กลับไปที่สีเริ่มต้น
   }
-`;
-
-const UnderlayContainer = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-`;
-
-const TextDisplay = styled.div`
-  font-size: 150px;
-  font-family: 'Press Start 2P', sans-serif;
-  font-weight: bold;
-  display: inline-block;
-  padding: 10px 20px;
-  color: white;
-  animation: ${slideColor} 6s infinite ease-in-out;  // การเปลี่ยนสีอย่างนุ่มนวล
 `;
 
 export default function Underlay() {
@@ -205,17 +149,6 @@ export default function Underlay() {
     
   return (
     <>
-      <TopLeft>
-        <i>Sanphet Somjit</i>
-      </TopLeft>
-
-      <TopMidLeft>
-        <i>Game Developer</i>
-      </TopMidLeft>
-
-      <BottomLeft>
-        <Intro />
-      </BottomLeft>
 
       <BottomRight>
         2025

@@ -1,18 +1,22 @@
 import { suspend } from 'suspend-react'
-import { Canvas,useFrame } from "@react-three/fiber";
-import { useGLTF, MeshReflectorMaterial,BakeShadows } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF, MeshReflectorMaterial,BakeShadows,Html } from "@react-three/drei";
 import { EffectComposer, Bloom, DepthOfField, ToneMapping } from '@react-three/postprocessing';
 import { easing } from 'maath'
 import {Instances, Computers } from "./Computers";
 import CameraRig from './CameraRigController';
+import { Text } from '@react-three/drei'; // Import Text component
+import { useState, useRef } from 'react';
+import AutoFocusDOF from './AutoFocusDOF'
 
 const suzi = import('@pmndrs/assets/models/bunny.glb')
 
+
 const SceneContainer = () => {
+
     return (
       <div style={{ height: '100vh', width: '100%', backgroundColor: '#202020' }}>
          <Canvas shadows dpr={[1, 1.5]} camera={{ position: [-1.5, 1, 5.5], fov: 45, near: 1, far: 20 }} eventSource={document.getElementById('root')} eventPrefix="client">
-
        {/* Lights */}
       <color attach="background" args={['black']} />
       <hemisphereLight intensity={0.15} groundColor="black" />
@@ -48,11 +52,51 @@ const SceneContainer = () => {
           {/* Postprocessing */}
          <EffectComposer disableNormalPass>
          <Bloom luminanceThreshold={0} mipmapBlur luminanceSmoothing={0.0} intensity={5} />
-         <DepthOfField target={[0, 0, 13]} focalLength={0.3} bokehScale={15} height={700} />
+         <DepthOfField target={[0, 0, 13]} focalLength={0.6} bokehScale={15} height={700} />
+
+          <EffectComposer>
+          <AutoFocusDOF
+            bokehScale={10} //blur scale
+            resolution={1024} //resolution (decrease for performance)
+            mouseFocus //if false, the center of the screen will be the focus
+            focusSpeed={0.05} // milliseconds to focus a new detected mesh
+            focalLength={0.01} //how far the focus should go
+          />
+         </EffectComposer>
          </EffectComposer>
          <CameraRig />        
          <BakeShadows />
+
+         {/* 3D Text */}
+        <Text
+          position={[0, -0.9, 1]}  // Position of text in the scene
+          fontSize={.1}            // Font size
+          color="white"          // Text color
+          maxWidth={200}         // Maximum width
+          lineHeight={1}         // Line height for multi-line text
+          letterSpacing={0.1}    // Spacing between letters
+          textAlign="center"     // Align text to center
+        >
+          Sanphet Somjit
+        </Text>
+
+        {/* 3D GAME Deverloper Text */}
+        <Text
+          position={[0, -1.1, 1]}  // Position of text in the scene
+          fontSize={.15}            // Font size
+          color="white"          // Text color
+          maxWidth={200}         // Maximum width
+          lineHeight={1}         // Line height for multi-line text
+          letterSpacing={0.1}    // Spacing between letters
+          textAlign="center"     // Align text to center
+        >
+          Game Dev & Tech ART & Programmer
+        </Text>
+
+        
+
         </Canvas>
+
       </div>
     );
   };
