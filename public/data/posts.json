@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1,
+    "title": "My First Blog Post",
+    "summary": "This is a summary of the first blog post.",
+    "author": "John Doe",
+    "date": "2025-01-01",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the first blog post...",
+    "tags": ["React", "Web Development", "JavaScript"]
+  },
+  {
+    "id": 2,
+    "title": "My Second Blog Post",
+    "summary": "This is a summary of the second blog post.",
+    "author": "John Doe",
+    "date": "2025-01-02",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the second blog post...",
+    "tags": ["Node.js", "Backend Development", "API"]
+  },
+  {
+    "id": 3,
+    "title": "My Third Blog Post",
+    "summary": "This is a summary of the third blog post.",
+    "author": "Jane Doe",
+    "date": "2025-01-03",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the third blog post...",
+    "tags": ["Python", "Machine Learning", "AI"]
+  },
+  {
+    "id": 4,
+    "title": "My Fourth Blog Post",
+    "summary": "This is a summary of the fourth blog post.",
+    "author": "Jane Doe",
+    "date": "2025-01-04",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the fourth blog post...",
+    "tags": ["CSS", "Web Design", "UI/UX"]
+  },
+  {
+    "id": 5,
+    "title": "My Fifth Blog Post",
+    "summary": "This is a summary of the fifth blog post.",
+    "author": "John Smith",
+    "date": "2025-01-05",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the fifth blog post...",
+    "tags": ["React", "Hooks", "Frontend"]
+  },
+  {
+    "id": 6,
+    "title": "My Sixth Blog Post",
+    "summary": "This is a summary of the sixth blog post.",
+    "author": "John Smith",
+    "date": "2025-01-06",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the sixth blog post...",
+    "tags": ["Vue.js", "Frontend", "JavaScript"]
+  },
+  {
+    "id": 7,
+    "title": "My Seventh Blog Post",
+    "summary": "This is a summary of the seventh blog post.",
+    "author": "Alice Cooper",
+    "date": "2025-01-07",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the seventh blog post...",
+    "tags": ["Vue.js", "Frontend", "Design"]
+  },
+  {
+    "id": 8,
+    "title": "My Eighth Blog Post",
+    "summary": "This is a summary of the eighth blog post.",
+    "author": "Alice Cooper",
+    "date": "2025-01-08",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the eighth blog post...",
+    "tags": ["Node.js", "Backend", "Web API"]
+  },
+  {
+    "id": 9,
+    "title": "My Ninth Blog Post",
+    "summary": "This is a summary of the ninth blog post.",
+    "author": "Bob Lee",
+    "date": "2025-01-09",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the ninth blog post...",
+    "tags": ["JavaScript", "ES6", "Programming"]
+  },
+  {
+    "id": 10,
+    "title": "My Tenth Blog Post",
+    "summary": "This is a summary of the tenth blog post.",
+    "author": "Bob Lee",
+    "date": "2025-01-10",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the tenth blog post...",
+    "tags": ["TypeScript", "React", "Web Development"]
+  },
+  {
+    "id": 11,
+    "title": "My Eleventh Blog Post",
+    "summary": "This is a summary of the eleventh blog post.",
+    "author": "Mary Jane",
+    "date": "2025-01-11",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the eleventh blog post...",
+    "tags": ["HTML", "CSS", "Frontend"]
+  },
+  {
+    "id": 12,
+    "title": "My Twelfth Blog Post",
+    "summary": "This is a summary of the twelfth blog post.",
+    "author": "Mary Jane",
+    "date": "2025-01-12",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the twelfth blog post...",
+    "tags": ["API", "Backend", "Database"]
+  },
+  {
+    "id": 13,
+    "title": "My Thirteenth Blog Post",
+    "summary": "This is a summary of the thirteenth blog post.",
+    "author": "Jack Black",
+    "date": "2025-01-13",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the thirteenth blog post...",
+    "tags": ["Docker", "DevOps", "Containerization"]
+  },
+  {
+    "id": 14,
+    "title": "My Fourteenth Blog Post",
+    "summary": "This is a summary of the fourteenth blog post.",
+    "author": "Jack Black",
+    "date": "2025-01-14",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the fourteenth blog post...",
+    "tags": ["Node.js", "Express", "Backend"]
+  },
+  {
+    "id": 15,
+    "title": "My Fifteenth Blog Post",
+    "summary": "This is a summary of the fifteenth blog post.",
+    "author": "Sarah Green",
+    "date": "2025-01-15",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the fifteenth blog post...",
+    "tags": ["JavaScript", "Async", "Frontend"]
+  },
+  {
+    "id": 16,
+    "title": "My Sixteenth Blog Post",
+    "summary": "This is a summary of the sixteenth blog post.",
+    "author": "Sarah Green",
+    "date": "2025-01-16",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the sixteenth blog post...",
+    "tags": ["React", "State Management", "Frontend"]
+  },
+  {
+    "id": 17,
+    "title": "My Seventeenth Blog Post",
+    "summary": "This is a summary of the seventeenth blog post.",
+    "author": "Chris Pink",
+    "date": "2025-01-17",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the seventeenth blog post...",
+    "tags": ["SEO", "Digital Marketing", "Web"]
+  },
+  {
+    "id": 18,
+    "title": "My Eighteenth Blog Post",
+    "summary": "This is a summary of the eighteenth blog post.",
+    "author": "Chris Pink",
+    "date": "2025-01-18",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the eighteenth blog post...",
+    "tags": ["API", "GraphQL", "Backend"]
+  },
+  {
+    "id": 19,
+    "title": "My Nineteenth Blog Post",
+    "summary": "This is a summary of the nineteenth blog post.",
+    "author": "Olivia Grey",
+    "date": "2025-01-19",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the nineteenth blog post...",
+    "tags": ["Firebase", "Real-time", "Backend"]
+  },
+  {
+    "id": 20,
+    "title": "My Twentieth Blog Post",
+    "summary": "This is a summary of the twentieth blog post.",
+    "author": "Olivia Grey",
+    "date": "2025-01-20",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the twentieth blog post...",
+    "tags": ["CSS", "SASS", "Frontend"]
+  },
+  {
+    "id": 21,
+    "title": "My Twenty-first Blog Post",
+    "summary": "This is a summary of the twenty-first blog post.",
+    "author": "Eve Blue",
+    "date": "2025-01-21",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the twenty-first blog post...",
+    "tags": ["HTML5", "Web Design", "CSS"]
+  },
+  {
+    "id": 22,
+    "title": "My Twenty-second Blog Post",
+    "summary": "This is a summary of the twenty-second blog post.",
+    "author": "Eve Blue",
+    "date": "2025-01-22",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the twenty-second blog post...",
+    "tags": ["SEO", "Digital Marketing", "Content Strategy"]
+  },
+  {
+    "id": 23,
+    "title": "My Twenty-third Blog Post",
+    "summary": "This is a summary of the twenty-third blog post.",
+    "author": "Tom White",
+    "date": "2025-01-23",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the twenty-third blog post...",
+    "tags": ["JQuery", "Web Development", "JavaScript"]
+  },
+  {
+    "id": 24,
+    "title": "My Twenty-fourth Blog Post",
+    "summary": "This is a summary of the twenty-fourth blog post.",
+    "author": "Tom White",
+    "date": "2025-01-24",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the twenty-fourth blog post...",
+    "tags": ["PHP", "Backend", "Web"]
+  },
+  {
+    "id": 25,
+    "title": "My Twenty-fifth Blog Post",
+    "summary": "This is a summary of the twenty-fifth blog post.",
+    "author": "Rachel Black",
+    "date": "2025-01-25",
+    "image": "/gif/E.gif",
+    "content": "This is the full content of the twenty-fifth blog post...",
+    "tags": ["TypeScript", "Node.js", "Backend"]
+  }
+]
