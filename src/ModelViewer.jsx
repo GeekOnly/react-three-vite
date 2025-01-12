@@ -1,4 +1,5 @@
 import { suspend } from 'suspend-react'
+import { useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, MeshReflectorMaterial,BakeShadows,Html } from "@react-three/drei";
 import { EffectComposer, Bloom, DepthOfField, ToneMapping } from '@react-three/postprocessing';
@@ -6,16 +7,28 @@ import { easing } from 'maath'
 import {Instances, Computers } from "./Computers";
 import CameraRig from './CameraRigController';
 import { Text } from '@react-three/drei'; // Import Text component
-import { useState, useRef } from 'react';
 import AutoFocusDOF from './AutoFocusDOF'
 
 const suzi = import('@pmndrs/assets/models/bunny.glb')
 
 
 const SceneContainer = () => {
+    const [size, setSize] = useState({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+
+    // Handle window resize
+    useEffect(() => {
+      const handleResize = () => {
+        setSize({ width: window.innerWidth, height: window.innerHeight });
+      };
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     return (
-      <div style={{ height: '100vh', width: '100%', backgroundColor: '#202020' }}>
+      <div style={{ width: size.width, height: size.height, backgroundColor: '#202020' }}>
          <Canvas shadows dpr={[1, 1.5]} camera={{ position: [-1.5, 1, 5.5], fov: 45, near: 1, far: 20 }} eventSource={document.getElementById('root')} eventPrefix="client">
        {/* Lights */}
       <color attach="background" args={['black']} />
