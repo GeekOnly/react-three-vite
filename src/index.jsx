@@ -29,6 +29,7 @@ createRoot(document.getElementById('root')).render(
     <Element name="home" className="element" >
       <div id="home">
        <Header name={"HOME"}/>
+       <App />
       </div>
     </Element>
 

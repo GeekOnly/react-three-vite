@@ -123,3 +123,16 @@ button:focus {
 button:hover {
   background-color: #bbb;
 }
+
+/* skill-physics-container: CSS class สำหรับ container ของ canvas */
+.skill-physics-container {
+  width: 100%; /* หรือใช้ขนาดที่ต้องการ เช่น 500px */
+  height: 500px; /* หรือกำหนดขนาดที่ต้องการ */
+  background-color: #f0f0f0; /* เปลี่ยนสีพื้นหลัง */
+  position: relative;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+}
