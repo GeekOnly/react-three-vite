@@ -13,27 +13,13 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #646060;
+  background-color: #141414;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  overflow: hidden;
-}
-
-#root {
-  overflow: auto;
-}
-
-body {
-  position: fixed;
-  overflow: hidden;
-  overscroll-behavior-y: none;
-  font-family: helvetica neue, helvetica, arial, sans-serif;
-  color: black;
-  -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
@@ -41,8 +27,7 @@ body {
   src: url('/path/to/Inter-Medium.woff') format('woff');
 }
 
-
-vertical-menu {
+.vertical-menu {
   height: 100vh;
   width: 80px;
   background-color: #000;
@@ -75,13 +60,21 @@ vertical-menu {
 }
 
 .header {
-  background-color: #a4c991;
-  position: 'absolute';
+  background-color: #030712;
+  position: absolute;
   padding: 10px 20px;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.navigation {
+  position: fixed; /* หรือ absolute */
+  top: 25%;
+  right: -75px;
+  width: 10%; /* ครอบคลุมทั้งหน้าจอ */
+  height: 100%; /* ครอบคลุมทั้งหน้าจอ */
+  z-index: 9999; /* ให้แน่ใจว่าอยู่เหนือองค์ประกอบอื่น */
 }
 
 .underlay-container {
@@ -125,4 +118,8 @@ button {
 
 button:focus {
   background-color: #ccc;
+}
+
+button:hover {
+  background-color: #bbb;
 }

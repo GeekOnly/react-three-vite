@@ -1,38 +1,70 @@
-import { createRoot } from 'react-dom/client'
-import './styles.css'
-import App from './App'
+import { createRoot } from 'react-dom/client';
+import './styles.css';
+import App from './App';
 import Underlay from './Underlayer';
 import AboutMe from './AboutMe';
 import Projects from './Projects';
-import BlogList from "./components/BlogList";
+import BlogList from './components/BlogList';
 import BookmarkList from './components/Bookmark';
-import TicTacToe from './components/TicTacToe';
 import Footer from './components/Footer';
+import Navigation from './NavigationMenu';
+import { Element } from 'react-scroll'; // นำเข้า Element
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <header className="bg-blue-900 text-white p-4 shadow-lg">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-3xl font-bold">Blog</h1>
-      </div>
+    <header className="bg-slate-950 text-white p-4 shadow-lg">
+      <h1 className="text-9xl font-bold">{props.name}</h1>
     </header>
   );
 };
 
 createRoot(document.getElementById('root')).render(
-  <>
-    <App/>
-    <Underlay />
-    <h1 className="text-9xl font-bold">About Me</h1>
-    <AboutMe />
-    <h1 className="text-9xl font-bold">Projects</h1>
-    <Projects />
-    <h1 className="text-9xl font-bold">POST</h1>
-    <BlogList />
-    <h1 className="text-9xl font-bold">BOOKMARKS</h1>
-    <BookmarkList />
-    <h1 className="text-9xl font-bold">GAME</h1>
-    <TicTacToe />
+  <div>
+    
+    {/* Header added here */}
+    <Navigation />
+
+    
+    {/* Home section */}
+    <Element name="home" className="element" >
+      <div id="home">
+       <Header name={"HOME"}/>
+      </div>
+    </Element>
+
+    {/* About Me section */}
+    <Element name="about" className="element" style={{ paddingTop: '50px' }}>
+      <div id="about">
+      <Header name={"About Me"}/>
+        <AboutMe />
+      </div>
+    </Element>
+
+    {/* Projects section */}
+    <Element name="projects" className="element" style={{ paddingTop: '50px' }}>
+      <div id="projects">
+        <Header name={"Projects"}/>
+        <Projects />
+      </div>
+    </Element>
+
+    {/* Blog section */}
+    <Element name="blog" className="element" style={{ paddingTop: '50px' }}>
+      <div id="blog">
+        <Header name={"POSTS"}/>
+        <BlogList />
+      </div>
+    </Element>
+
+    {/* Bookmarks section */}
+    <Element name="bookmark" className="element" style={{ paddingTop: '50px' }}>
+      <div id="bookmark">
+        <Header name={"BOOKMARKS"}/>
+        <BookmarkList />
+      </div>
+    </Element>
+
+    {/* Footer */}
     <Footer />
-  </>
-)
+  </div>
+);

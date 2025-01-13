@@ -13,30 +13,6 @@ const BottomRight = styled.div`
   font-size: 12px;
   text-align: right;
 `
-
-const LeftMiddle = styled.div`
-  position: absolute;
-  color: white;
-  bottom: 50%;
-  right: 6vw;
-  font-family: 'Inter';
-  font-weight: 400;
-  line-height: 1em;
-  letter-spacing: -0.01em;
-  font-size: 12px;
-  transform: rotate(90deg) translate3d(50%, 0, 0);
-  transform-origin: 100% 50%;
-`
-
-const Bar = styled.div`
-  position: absolute;
-  top: ${(props) => (props.vertical ? '0px' : '50%')};
-  left: ${(props) => (props.vertical ? '50%' : '0px')};
-  width: ${(props) => (props.vertical ? '2px' : '150px')};
-  height: ${(props) => (props.vertical ? '150px' : '2px')};
-  background:rgb(67, 199, 5);
-`
-
 // Define the Hamburger styled component
 const Hamburger = styled.div`
   position: absolute;
@@ -158,23 +134,20 @@ export default function Underlay() {
         Sanphet Somjit
       </BottomRight>
 
-      {/* Navigation Menu*/}
-      <LeftMiddle>Home About Bookmark</LeftMiddle>
-
       {/* Link Special*/}
       <Hamburger vertical={true} className={isOpen ? "open" : ""} onClick={toggleMenu}>
         <div />
         <div />
         <div />
       </Hamburger>
-      <Overlay open={isOpen}>
+      <Overlay open={isOpen} className="navigation">
         <MenuItem>Sanphet</MenuItem>
         <MenuItem>About Me</MenuItem>
         <MenuItem>Game Showcase</MenuItem>
         <MenuItem>Projects</MenuItem>
         <MenuItem>Blogs</MenuItem>
         <MenuItem>Bookmarks</MenuItem>
-        </Overlay>
+      </Overlay>
     </>
   )
 }
