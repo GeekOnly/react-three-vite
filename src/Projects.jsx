@@ -11,32 +11,64 @@ import DemoComputer from './components/DemoComputer.jsx';
 import IconButton from '@mui/material/IconButton';
 import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
-import './Projects.css'
+import './Projects.css';
 
-const projectCount = myProjects.length;
+const groupedProjects = myProjects.reduce((acc, project) => {
+  if (!acc[project.type]) acc[project.type] = [];
+  acc[project.type].push(project);
+  return acc;
+}, {});
 
 const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+  const [currentType, setCurrentType] = useState(Object.keys(groupedProjects)[0]); // Default to the first type
+
+  const projectsByType = groupedProjects[currentType] || [];
+  const currentProject = projectsByType[selectedProjectIndex];
 
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
       if (direction === 'previous') {
-        return prevIndex === 0 ? projectCount - 1 : prevIndex - 1;
+        return prevIndex === 0 ? projectsByType.length - 1 : prevIndex - 1;
       } else {
-        return prevIndex === projectCount - 1 ? 0 : prevIndex + 1;
+        return prevIndex === projectsByType.length - 1 ? 0 : prevIndex + 1;
       }
     });
   };
 
+  const handleCategoryChange = (type) => {
+    setCurrentType(type);
+    setSelectedProjectIndex(0); // Reset index when switching categories
+  };
+
   useGSAP(() => {
     gsap.fromTo(`.animatedText`, { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.2, ease: 'power2.inOut' });
-  }, [selectedProjectIndex]);
-
-  const currentProject = myProjects[selectedProjectIndex];
+  }, [selectedProjectIndex, currentType]);
 
   return (
-    <section className="c-space my-20">
-      <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full ">
+    <section className="c-space my-20 relative">
+       {/* Category Tabs */}
+       <section className="c-space my-20 relative">
+         {/* Category Tabs */}
+         <div className="category-tabs flex gap-5 mb-10">
+           {Object.keys(groupedProjects).map((type) => (
+             <button
+               type="button"
+               key={type}
+               className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+               onClick={() => handleCategoryChange(type)}
+             >
+               {type}
+               <span className="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+                 {groupedProjects[type].length} {/* จำนวนโปรเจกต์ในประเภทนี้ */}
+               </span>
+             </button>
+           ))}
+         </div>
+       </section>
+
+      <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
+        {/* Project Details */}
         <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200 rounded-xl bg-neutral-700">
           <div className="absolute top-0 right-0">
             <img src={currentProject.spotlight} alt="spotlight" className="w-full h-96 object-cover rounded-xl" />
@@ -48,7 +80,6 @@ const Projects = () => {
 
           <div className="flex flex-col gap-5 text-white-600 my-5">
             <p className="text-white text-2xl font-semibold animatedText">{currentProject.title}</p>
-
             <p className="text-white animatedText">{currentProject.desc}</p>
             <p className="text-white animatedText">{currentProject.subdesc}</p>
           </div>
@@ -57,7 +88,10 @@ const Projects = () => {
             <div className="flex items-center gap-3">
               {currentProject.tags.map((tag, index) => (
                 <div key={index} className="tech-logo">
-                  <img src={tag.path} alt={tag.name} />
+                  <img 
+                  src={tag.path} 
+                  alt={tag.name}
+                  style={{ width: '60px', height: '60px', objectFit: 'contain' }} />
                 </div>
               ))}
             </div>
@@ -66,7 +100,8 @@ const Projects = () => {
               className="flex items-center gap-2 cursor-pointer text-white-600"
               href={currentProject.href}
               target="_blank"
-              rel="noreferrer">
+              rel="noreferrer"
+            >
               <p>Check Live Site</p>
               <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
             </a>
@@ -74,17 +109,16 @@ const Projects = () => {
 
           <div className="flex justify-between items-center mt-7">
             <IconButton className="arrow-btn" onClick={() => handleNavigation('previous')}>
-            <ArrowCircleLeftOutlinedIcon className='arrow_icon' fontSize="large" />
+              <ArrowCircleLeftOutlinedIcon className="arrow_icon" fontSize="large" />
             </IconButton>
 
-            <IconButton 
-              className="arrow-btn" 
-              onClick={() => handleNavigation('next')} >
-              <ArrowCircleRightOutlinedIcon className='arrow_icon' fontSize="large" />
+            <IconButton className="arrow-btn" onClick={() => handleNavigation('next')}>
+              <ArrowCircleRightOutlinedIcon className="arrow_icon" fontSize="large" />
             </IconButton>
           </div>
         </div>
 
+        {/* 3D Canvas */}
         <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full">
           <Canvas>
             <ambientLight intensity={Math.PI} />
