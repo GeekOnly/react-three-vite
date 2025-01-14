@@ -1,9 +1,11 @@
 import { Profile } from "./components/Profile";
 import PhyscisSkill from "./components/SkillPhysics";
+import VehicleScene from "./GAME/TopDownVehicle";
+import PhongGameplay from "./GAME/PingPong/PongGame";
 
 const AboutMe = () => {
   return (
-    <div className="about-me-container p-6 sm:p-4 bg-gray-950 text-gray-100 w-full max-w-[95%] mx-auto">
+    <div className="about-me-container p-6 sm:p-4 text-gray-100 w-full max-w-[95%] mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-6 sm:grid-rows-5 grid-rows-auto gap-4">
         {/* Profile Picture */}
         <div className="sm:col-start-5 sm:row-start-1 bg-stone-900 rounded-lg shadow-lg p-4">
@@ -22,7 +24,7 @@ const AboutMe = () => {
         </div>
 
         {/* Skills */}
-        <div className="sm:col-span-2 sm:col-start-3 sm:row-start-5 bg-stone-900 rounded-lg shadow-lg p-4">
+        <div className="sm:col-span-2 sm:col-start-3 sm:row-start-5 bg-slate-950 rounded-lg shadow-lg p-4">
           <h3 className="text-lg font-semibold text-gray-300 mt-2">Passion</h3>
           <p className="text-sm text-gray-300 mt-2">
             <strong>Survival Zombie 2D:</strong> Developed combat mechanics and AI behaviors for a 2D top-down shooter.
@@ -34,10 +36,9 @@ const AboutMe = () => {
 
         {/* Skill Experience */}
         <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-stone-900 rounded-lg shadow-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-300 mt-2">Pj.js</h3>
-          <div className="w-full h-full overflow-hidden sm:block hidden">
-                 <PhyscisSkill />
-           </div>
+          <div className="w-full h-[600px] overflow-hidden sm:block hidden">
+            <PhongGameplay />
+          </div>
         </div>
 
         {/* Education */}

@@ -8,6 +8,11 @@ import { myProjects } from './constants/index.js';
 import CanvasLoader from './components/Loading.jsx';
 import DemoComputer from './components/DemoComputer.jsx';
 
+import IconButton from '@mui/material/IconButton';
+import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
+import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
+import './Projects.css'
+
 const projectCount = myProjects.length;
 
 const Projects = () => {
@@ -31,10 +36,8 @@ const Projects = () => {
 
   return (
     <section className="c-space my-20">
-      <p className="head-text">My Selected Work</p>
-
-      <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
-        <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200">
+      <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full ">
+        <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200 rounded-xl bg-neutral-700">
           <div className="absolute top-0 right-0">
             <img src={currentProject.spotlight} alt="spotlight" className="w-full h-96 object-cover rounded-xl" />
           </div>
@@ -46,8 +49,8 @@ const Projects = () => {
           <div className="flex flex-col gap-5 text-white-600 my-5">
             <p className="text-white text-2xl font-semibold animatedText">{currentProject.title}</p>
 
-            <p className="animatedText">{currentProject.desc}</p>
-            <p className="animatedText">{currentProject.subdesc}</p>
+            <p className="text-white animatedText">{currentProject.desc}</p>
+            <p className="text-white animatedText">{currentProject.subdesc}</p>
           </div>
 
           <div className="flex items-center justify-between flex-wrap gap-5">
@@ -70,13 +73,15 @@ const Projects = () => {
           </div>
 
           <div className="flex justify-between items-center mt-7">
-            <button className="arrow-btn" onClick={() => handleNavigation('previous')}>
-              <img src="/assets/left-arrow.png" alt="left arrow" />
-            </button>
+            <IconButton className="arrow-btn" onClick={() => handleNavigation('previous')}>
+            <ArrowCircleLeftOutlinedIcon className='arrow_icon' fontSize="large" />
+            </IconButton>
 
-            <button className="arrow-btn" onClick={() => handleNavigation('next')}>
-              <img src="/assets/right-arrow.png" alt="right arrow" className="w-4 h-4" />
-            </button>
+            <IconButton 
+              className="arrow-btn" 
+              onClick={() => handleNavigation('next')} >
+              <ArrowCircleRightOutlinedIcon className='arrow_icon' fontSize="large" />
+            </IconButton>
           </div>
         </div>
 

@@ -9,10 +9,11 @@ import BookmarkList from './components/Bookmark';
 import Footer from './components/Footer';
 import Navigation from './NavigationMenu';
 import { Element } from 'react-scroll'; // นำเข้า Element
+import VehicleScene from "./GAME/TopDownVehicle";
 
 const Header = (props) => {
   return (
-    <header className="bg-slate-950 text-white p-4 shadow-lg">
+    <header className="w-full text-white p-4 shadow-lg">
       <h1 className="text-9xl font-bold">{props.name}</h1>
     </header>
   );
@@ -29,7 +30,6 @@ createRoot(document.getElementById('root')).render(
     <Element name="home" className="element" >
       <div id="home">
        <Header name={"HOME"}/>
-       <App />
       </div>
     </Element>
 
@@ -64,6 +64,8 @@ createRoot(document.getElementById('root')).render(
         <BookmarkList />
       </div>
     </Element>
+    <VehicleScene />
+    
 
     {/* Footer */}
     <Footer />
