@@ -27,37 +27,6 @@ body,
   src: url('/path/to/Inter-Medium.woff') format('woff');
 }
 
-.vertical-menu {
-  height: 100vh;
-  width: 80px;
-  background-color: #000;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.vertical-menu .menu-item,
-.vertical-menu .footer-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-  color: gray;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.vertical-menu .menu-item:hover,
-.vertical-menu .footer-icon:hover {
-  color: cyan;
-}
-
-.vertical-menu .logo {
-  font-size: 2rem;
-  color: white;
-  margin-top: 20px;
-}
 
 .header {
   background-color: #030712;
@@ -82,46 +51,6 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.text-display {
-  font-size: 24px;
-  font-weight: bold;
-  display: inline-block;
-  transition: opacity 0.5s ease;
-}
-
-.fade-text {
-  opacity: 0;
-  animation: fadeInOut 2s infinite;
-}
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-button {
-  border: 2px solid #000;
-  background-color: #f0f0f0;
-  font-size: 2rem;
-  cursor: pointer;
-  outline: none;
-}
-
-button:focus {
-  background-color: #ccc;
-}
-
-button:hover {
-  background-color: #bbb;
 }
 
 /* skill-physics-container: CSS class สำหรับ container ของ canvas */

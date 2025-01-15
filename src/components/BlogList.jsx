@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BlogCard from "./BlogCard";
 
 const BlogList = () => {
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedTags, setSelectedTags] = useState([]); // Track multiple selected tags
+  const [dropdownVisible, setDropdownVisible] = useState(false);
   const [filterTag, setFilterTag] = useState("All");
-  const [dropdownVisible, setDropdownVisible] = useState(false); // Dropdown visibility state
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 5;
+  const postsPerPage = 8;
+
+  const dropdownRef = useRef(null); // Ref for dropdown menu
 
   useEffect(() => {
     // Load JSON data
@@ -15,6 +18,18 @@ const BlogList = () => {
       .then((response) => response.json())
       .then((data) => setPosts(data))
       .catch((error) => console.error("Error fetching posts:", error));
+
+    // Close the dropdown if clicked outside
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownVisible(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   // Filter and Search Logic
@@ -25,28 +40,50 @@ const BlogList = () => {
       post.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
     )
-    .filter((post) => (filterTag === "All" ? true : post.tags.includes(filterTag)));
+    .filter((post) => {
+      if (filterTag === "All") return true;
+      return post.tags.includes(filterTag);
+    })
+    .filter((post) => {
+      if (selectedTags.length === 0) return true;
+      return selectedTags.every(tag => post.tags.includes(tag));
+    });
 
   // Pagination Logic
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
-  // Handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  // Get all unique tags for related tags
+  const allTags = [...new Set(posts.flatMap((post) => post.tags))];
+
+  const filteredTags = allTags.filter((tag) =>
+    filteredPosts.some((post) => post.tags.includes(tag))
+  );
+
+  // Handle tag selection
+  const handleTagSelection = (tag) => {
+    setSelectedTags((prevTags) =>
+      prevTags.includes(tag)
+        ? prevTags.filter((t) => t !== tag) // Deselect tag
+        : [...prevTags, tag] // Select tag
+    );
   };
 
   return (
     <div className="container mx-auto p-6">
       {/* Search and Filter */}
       <form className="max-w-lg mx-auto">
-        <div className="flex">
-          {/* Dropdown Button for Categories */}
+        <div className="flex relative">
+          {/* Dropdown Button */}
           <button
             type="button"
             onClick={() => setDropdownVisible(!dropdownVisible)}
-            className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:border-gray-600"
+            className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium bg-gray-400 border border-gray-300 rounded-s-lg hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:border-gray-600"
           >
             {filterTag || "All Categories"}
             <svg
@@ -68,9 +105,27 @@ const BlogList = () => {
 
           {/* Dropdown Menu */}
           {dropdownVisible && (
-            <div className="absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 z-50">
+            <div
+              ref={dropdownRef} // Add ref to dropdown
+              className="absolute bg-black divide-y divide-gray-100 rounded-s-xl shadow w-44 dark:bg-gray-700 z-10"
+            >
               <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                {["All", "Mockups", "Templates", "Design", "Logos"].map((category) => (
+                {/* All Categories Option */}
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFilterTag("All");
+                      setDropdownVisible(false);
+                    }}
+                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    All Categories
+                  </button>
+                </li>
+
+                {/* Categories */}
+                {["Unity", "Unreal", "TechArt", "Full Stack", "GameDev"].map((category) => (
                   <li key={category}>
                     <button
                       type="button"
@@ -78,7 +133,7 @@ const BlogList = () => {
                         setFilterTag(category);
                         setDropdownVisible(false);
                       }}
-                      className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                      className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       {category}
                     </button>
@@ -95,14 +150,41 @@ const BlogList = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="block p-2.5 w-full text-sm bg-gray-50 border border-gray-300 rounded-e-lg dark:bg-gray-700 dark:border-gray-600"
-              placeholder="Search Mockups, Logos, Design Templates..."
+              placeholder="Search..."
             />
           </div>
         </div>
       </form>
 
+      {/* Display Related Tags */}
+      {filteredTags.length > 0 && (
+        <div className="mt-4 text-center">
+          <div className="mt-2">
+            <div className="flex flex-wrap justify-center">
+              {filteredTags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => handleTagSelection(tag)}
+                  className={`inline-block text-gray-700 text-sm px-3 py-1 rounded-md m-1 hover:bg-gray-300 
+                    ${selectedTags.includes(tag) ? "bg-blue-200 border-2 border-blue-400" : "bg-gray-200"}`}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+            {/* Show "Show All Tags" Button */}
+            <button
+              onClick={() => setSelectedTags([])}
+              className="mt-4 text-sm text-blue-600 hover:underline"
+            >
+              Show All Tags
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Blog Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
         {currentPosts.map((post) => (
           <BlogCard key={post.id} post={post} />
         ))}
@@ -114,9 +196,7 @@ const BlogList = () => {
           <button
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            className={`px-4 py-2 mx-1 ${
-              currentPage === index + 1 ? "bg-blue-600" : "bg-blue-500"
-            } text-white rounded-md hover:bg-blue-700`}
+            className={`px-4 py-2 mx-1 ${currentPage === index + 1 ? "bg-blue-600" : "bg-blue-500"} text-white rounded-md hover:bg-blue-700`}
           >
             {index + 1}
           </button>

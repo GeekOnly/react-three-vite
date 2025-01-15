@@ -10,14 +10,7 @@ import Footer from './components/Footer';
 import Navigation from './NavigationMenu';
 import { Element } from 'react-scroll'; // นำเข้า Element
 import VehicleScene from "./GAME/TopDownVehicle";
-
-const Header = (props) => {
-  return (
-    <header className="w-full text-white p-4 shadow-lg">
-      <h1 className="text-9xl font-bold">{props.name}</h1>
-    </header>
-  );
-};
+import Header from './Header';
 
 createRoot(document.getElementById('root')).render(
   <div>
