@@ -1,4 +1,4 @@
-import { Text, useGLTF, useTexture } from '@react-three/drei'
+import { Text, useGLTF, useTexture,Sky } from '@react-three/drei'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Physics, useBox, useCircle, usePlane } from '@react-three/p2'
 import { useRef } from 'react'
@@ -29,6 +29,7 @@ const state = proxy({
 
 function Paddle({ speed = 10 }) {
   const model = useRef()
+  const maxSpeed = 10; // กำหนดความเร็วสูงสุดของ Paddle
   const pos = useRef([0, 0])
   const { count } = useSnapshot(state)
   const { nodes, materials } = useGLTF('/pingpong.glb')
@@ -38,7 +39,15 @@ function Paddle({ speed = 10 }) {
     onCollide: (e) => state.api.pong(e.contact.impactVelocity),
   }))
   api.position.subscribe((p) => (pos.current = p))
+
+  // ติดตามตำแหน่งของเมาส์ในขณะเคลื่อนไหว
   useFrame((state) => {
+    // ตรวจสอบว่าตำแหน่งของ Paddle หลุดจากขอบจอหรือไม่
+  if (pos.current[0] < -5 || pos.current[0] > 5 || pos.current[1] < -5 || pos.current[1] > 5) {
+    // รีเซ็ตตำแหน่งของ Paddle กลับไปที่จุดเริ่มต้น (0, 0)
+    api.position.set(0, 0, 0)
+  }
+
     model.current.rotation.x = THREE.MathUtils.lerp(model.current.rotation.x, 0, 0.2)
     model.current.rotation.y = THREE.MathUtils.lerp(
       model.current.rotation.y,
@@ -49,9 +58,9 @@ function Paddle({ speed = 10 }) {
     // for example the ball can fall through the paddle if moved towards each other
     // angle in theory the same but speeds are different in this case
     api.velocity.set(
-      (state.mouse.x * 10 - pos.current[0]) * speed,
-      (state.mouse.y * 5 - pos.current[1]) * speed * 2,
-    )
+      clamp((state.mouse.x * 5 - pos.current[0]) * speed, -maxSpeed, maxSpeed),
+      clamp((state.mouse.y * 5 - pos.current[1]) * speed * 2, -maxSpeed, maxSpeed)
+    );
     api.angle.set(model.current.rotation.y)
   })
   return (
