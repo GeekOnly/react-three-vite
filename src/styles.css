@@ -79,3 +79,11 @@ body {
 .transition-transform {
   transition: transform 0.3s ease-in-out;
 }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}

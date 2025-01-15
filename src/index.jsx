@@ -11,6 +11,7 @@ import Navigation from './NavigationMenu';
 import { Element } from 'react-scroll'; // นำเข้า Element
 import VehicleScene from "./GAME/TopDownVehicle";
 import Header from './Header';
+import CreditPage from './CreditPage';
 
 createRoot(document.getElementById('root')).render(
   <div>
@@ -57,10 +58,18 @@ createRoot(document.getElementById('root')).render(
         <BookmarkList />
       </div>
     </Element>
-    <VehicleScene />
     
+    {/* Bookmarks section */}
+    <Element name="credit" className="element" style={{ paddingTop: '50px' }}>
+      <div id="credit">
+       <CreditPage />
+      </div>
+    </Element>
 
     {/* Footer */}
-    <Footer />
+    <div className="relative">
+      <Footer />
+      <VehicleScene />
+    </div>
   </div>
 );

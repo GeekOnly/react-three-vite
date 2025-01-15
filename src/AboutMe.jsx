@@ -65,12 +65,13 @@ const AboutMe = () => {
 
         {/* Notable Projects */}
         <div className="sm:row-span-2 sm:col-start-4 sm:row-start-3 bg-stone-900 rounded-lg shadow-lg p-4">
-          <p className="text-sm text-gray-300 mt-2">
-            <img
-              src="./Profile.jpg"
-              alt="Profile"
-            />
-          </p>
+        <p className="text-sm text-gray-300 mt-2">
+         <img
+           src="./Profile.jpg"
+           alt="Profile image description"
+           className="h-full w-full object-cover rounded-lg"
+         />
+       </p>
         </div>
 
         {/* Future Goals */}

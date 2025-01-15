@@ -1,19 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
+
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import BlogCard from "./BlogCard";
 import BlogDetails from "./BlogDetails";
 
 const BlogList = () => {
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTags, setSelectedTags] = useState([]); // Track multiple selected tags
+  const [selectedTags, setSelectedTags] = useState([]);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [filterTag, setFilterTag] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
-  const [showModal, setShowModal] = useState(false);  // State สำหรับเปิด/ปิด modal
-  const [selectedPost, setSelectedPost] = useState(null); // State สำหรับเก็บโพสต์ที่เลือก
+  const [showModal, setShowModal] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
   const postsPerPage = 8;
 
-  const dropdownRef = useRef(null); // Ref for dropdown menu
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     // Load JSON data
@@ -22,7 +23,6 @@ const BlogList = () => {
       .then((data) => setPosts(data))
       .catch((error) => console.error("Error fetching posts:", error));
 
-    // Close the dropdown if clicked outside
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownVisible(false);
@@ -31,13 +31,13 @@ const BlogList = () => {
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   const handleReadMore = (post) => {
     setSelectedPost(post);
-    setShowModal(true); // เปิด modal เมื่อคลิก "Read More"
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
@@ -46,21 +46,25 @@ const BlogList = () => {
   };
 
   // Filter and Search Logic
-  const filteredPosts = posts
-    .filter((post) =>
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-    )
-    .filter((post) => {
-      if (filterTag === "All") return true;
-      return post.tags.includes(filterTag);
-    })
-    .filter((post) => {
-      if (selectedTags.length === 0) return true;
-      return selectedTags.every(tag => post.tags.includes(tag));
-    });
+  const filteredPosts = useMemo(
+    () =>
+      posts
+        .filter((post) =>
+          post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          post.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          post.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          post.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+        )
+        .filter((post) => {
+          if (filterTag === "All") return true;
+          return post.tags.includes(filterTag);
+        })
+        .filter((post) => {
+          if (selectedTags.length === 0) return true;
+          return selectedTags.every((tag) => post.tags.includes(tag));
+        }),
+    [posts, searchTerm, filterTag, selectedTags]
+  );
 
   // Pagination Logic
   const indexOfLastPost = currentPage * postsPerPage;
@@ -72,18 +76,17 @@ const BlogList = () => {
   };
 
   // Get all unique tags for related tags
-  const allTags = [...new Set(posts.flatMap((post) => post.tags))];
+  const allTags = useMemo(() => [...new Set(posts.flatMap((post) => post.tags))], [posts]);
 
-  const filteredTags = allTags.filter((tag) =>
-    filteredPosts.some((post) => post.tags.includes(tag))
+  const filteredTags = useMemo(
+    () => allTags.filter((tag) => filteredPosts.some((post) => post.tags.includes(tag))),
+    [allTags, filteredPosts]
   );
 
   // Handle tag selection
   const handleTagSelection = (tag) => {
     setSelectedTags((prevTags) =>
-      prevTags.includes(tag)
-        ? prevTags.filter((t) => t !== tag) // Deselect tag
-        : [...prevTags, tag] // Select tag
+      prevTags.includes(tag) ? prevTags.filter((t) => t !== tag) : [...prevTags, tag]
     );
   };
 
@@ -92,7 +95,6 @@ const BlogList = () => {
       {/* Search and Filter */}
       <form className="max-w-lg mx-auto">
         <div className="flex relative">
-          {/* Dropdown Button */}
           <button
             type="button"
             onClick={() => setDropdownVisible(!dropdownVisible)}
@@ -119,11 +121,10 @@ const BlogList = () => {
           {/* Dropdown Menu */}
           {dropdownVisible && (
             <div
-              ref={dropdownRef} // Add ref to dropdown
+              ref={dropdownRef}
               className="absolute bg-black divide-y divide-gray-100 rounded-s-xl shadow w-44 dark:bg-gray-700 z-10"
             >
               <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                {/* All Categories Option */}
                 <li>
                   <button
                     type="button"
@@ -136,8 +137,6 @@ const BlogList = () => {
                     All Categories
                   </button>
                 </li>
-
-                {/* Categories */}
                 {["Unity", "Unreal", "TechArt", "Full Stack", "GameDev"].map((category) => (
                   <li key={category}>
                     <button
@@ -185,7 +184,6 @@ const BlogList = () => {
                 </button>
               ))}
             </div>
-            {/* Show "Show All Tags" Button */}
             <button
               onClick={() => setSelectedTags([])}
               className="mt-4 text-sm text-blue-600 hover:underline"
@@ -198,7 +196,7 @@ const BlogList = () => {
 
       {/* Blog Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-        {posts.map((post) => (
+        {currentPosts.map((post) => (
           <BlogCard key={post.id} post={post} onClick={() => handleReadMore(post)} />
         ))}
       </div>
@@ -211,7 +209,7 @@ const BlogList = () => {
           </div>
         </div>
       )}
-      
+
       {/* Pagination */}
       <div className="mt-6 flex justify-center">
         {Array.from({ length: Math.ceil(filteredPosts.length / postsPerPage) }, (_, index) => (

@@ -1,8 +1,14 @@
-const BlogCard = ({ post }) => {
+import React from 'react';
+
+const BlogCard = React.memo(({ post }) => {
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
-        <img className="rounded-t-lg w-full h-56 object-cover" src={post.image} alt={post.title} loading="lazy"/>
+        <img 
+        className="rounded-t-lg w-full h-56 object-cover" 
+        src={post.image} 
+        alt={post.title} 
+        loading="lazy"/>
       </a>
       <div className="p-5">
         <a href="#">
@@ -48,6 +54,6 @@ const BlogCard = ({ post }) => {
       </div>
     </div>
   );
-};
+});
 
 export default BlogCard;

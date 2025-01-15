@@ -30,22 +30,24 @@
   
   /* Description Section */
   .card-description {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: #ffffff;
-    color: #333333;
-    padding: 16px;
-    height: 35%; 
-    box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative; /* Enable positioning for the button */
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* จัดให้อยู่ที่ด้านบน */
+  align-items: flex-start;
+  background-color: #ffffff;
+  color: #333333;
+  padding: 10px;
+  height: 35%; 
+  box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  flex-grow: 1; /* เพิ่มให้ช่องว่างในส่วนนี้ถูกจัดการดีขึ้น */
+}
   
-  .text-title {
+.text-title {
     font-size: 1.2rem;
     font-weight: 700;
     margin: 0;
+    margin-bottom: -8px; /* เพิ่ม margin ด้านล่างเพื่อไม่ให้ติดขอบ */
   }
   
   .text-body {
@@ -94,8 +96,28 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
-  .tag:hover {
-    background-color: #4caf50;
-    color: white;
+  /* Section สำหรับปุ่ม */
+  .action-buttons {
+    display: flex;
+    position: relative;
+    top: -50px;
+    left: 190px;
+    gap: 20px; /* ช่องว่างระหว่างปุ่ม */
+  }
+  
+  /* ปุ่มไอคอน Link */
+  .action-button {
+    color: #c50707; /* สีของไอคอน */
+    font-size: 36px;
+    transform: scale(2);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .action-button:hover {
+    transform: scale(2.2);
   }
   

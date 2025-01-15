@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import BookmarkCard from "./BookmarkCard";
 
 const BookmarkList = () => {
@@ -43,45 +43,47 @@ const BookmarkList = () => {
     setSelectedBookmark(null);
   };
 
-  // Filter and Search Logic for Bookmarks
-  const filteredBookmarks = bookmarks
-    .filter((bookmark) =>
-      bookmark.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      bookmark.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      bookmark.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-    )
-    .filter((bookmark) => {
-      if (filterTag === "All") return true;
-      return bookmark.tags.includes(filterTag);
-    })
-    .filter((bookmark) => {
-      if (selectedTags.length === 0) return true;
-      return selectedTags.every(tag => bookmark.tags.includes(tag));
-    });
+  // Filter and Search Logic for Bookmarks with Memoization
+  const filteredBookmarks = useMemo(() => {
+    return bookmarks
+      .filter((bookmark) =>
+        bookmark.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        bookmark.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        bookmark.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+      )
+      .filter((bookmark) => {
+        if (filterTag === "All") return true;
+        return bookmark.tags.includes(filterTag);
+      })
+      .filter((bookmark) => {
+        if (selectedTags.length === 0) return true;
+        return selectedTags.every(tag => bookmark.tags.includes(tag));
+      });
+  }, [bookmarks, searchTerm, filterTag, selectedTags]);
 
-  // Pagination Logic
-  const indexOfLastBookmark = currentPage * bookmarksPerPage;
-  const indexOfFirstBookmark = indexOfLastBookmark - bookmarksPerPage;
-  const currentBookmarks = filteredBookmarks.slice(indexOfFirstBookmark, indexOfLastBookmark);
+  // Pagination Logic with Memoization
+  const indexOfLastBookmark = useMemo(() => currentPage * bookmarksPerPage, [currentPage]);
+  const indexOfFirstBookmark = useMemo(() => indexOfLastBookmark - bookmarksPerPage, [indexOfLastBookmark]);
+  const currentBookmarks = useMemo(() => filteredBookmarks.slice(indexOfFirstBookmark, indexOfLastBookmark), [filteredBookmarks, indexOfFirstBookmark, indexOfLastBookmark]);
 
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = useCallback((pageNumber) => {
     setCurrentPage(pageNumber);
-  };
+  }, []);
 
-  // Get all unique tags for related tags
-  const allTags = [...new Set(bookmarks.flatMap((bookmark) => bookmark.tags))];
+  // Get all unique tags for related tags with Memoization
+  const allTags = useMemo(() => [...new Set(bookmarks.flatMap((bookmark) => bookmark.tags))], [bookmarks]);
 
-  const filteredTags = allTags.filter((tag) =>
+  const filteredTags = useMemo(() => allTags.filter((tag) =>
     filteredBookmarks.some((bookmark) => bookmark.tags.includes(tag))
-  );
+  ), [allTags, filteredBookmarks]);
 
-  const handleTagSelection = (tag) => {
+  const handleTagSelection = useCallback((tag) => {
     setSelectedTags((prevTags) =>
       prevTags.includes(tag)
         ? prevTags.filter((t) => t !== tag)
         : [...prevTags, tag]
     );
-  };
+  }, []);
 
   return (
     <div className="container mx-auto p-6">
