@@ -3,10 +3,8 @@
     "id": 1,
     "title": "Creating Procedural Terrain in Unity",
     "summary": "A guide to generating procedural terrains using Unity's ECS system.",
-    "author": "John Doe",
-    "date": "2025-01-01",
     "image": "/assets/DD.webp",
-    "content": "This blog explains how to create a procedural terrain using Unity's ECS system and showcases the benefits of using the DOTS approach.",
+    "notion": "https://past-ferryboat-19b.notion.site/Farming-Simulator-17b77707c20780e4b3f4d3071ca57e48?pvs=4",
     "tags": ["Unity", "Procedural Generation", "Game Development", "Tech Art"]
   },
   {

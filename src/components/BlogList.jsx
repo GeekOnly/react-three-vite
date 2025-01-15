@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import BlogCard from "./BlogCard";
+import BlogDetails from "./BlogDetails";
 
 const BlogList = () => {
   const [posts, setPosts] = useState([]);
@@ -8,6 +9,8 @@ const BlogList = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [filterTag, setFilterTag] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
+  const [showModal, setShowModal] = useState(false);  // State สำหรับเปิด/ปิด modal
+  const [selectedPost, setSelectedPost] = useState(null); // State สำหรับเก็บโพสต์ที่เลือก
   const postsPerPage = 8;
 
   const dropdownRef = useRef(null); // Ref for dropdown menu
@@ -28,9 +31,19 @@ const BlogList = () => {
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleReadMore = (post) => {
+    setSelectedPost(post);
+    setShowModal(true); // เปิด modal เมื่อคลิก "Read More"
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedPost(null);
+  };
 
   // Filter and Search Logic
   const filteredPosts = posts
@@ -185,11 +198,20 @@ const BlogList = () => {
 
       {/* Blog Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-        {currentPosts.map((post) => (
-          <BlogCard key={post.id} post={post} />
+        {posts.map((post) => (
+          <BlogCard key={post.id} post={post} onClick={() => handleReadMore(post)} />
         ))}
       </div>
 
+      {/* Modal for BlogDetails */}
+      {showModal && selectedPost && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-4/5 md:w-3/4 lg:w-1/2">
+            <BlogDetails post={selectedPost} onBack={handleCloseModal} />
+          </div>
+        </div>
+      )}
+      
       {/* Pagination */}
       <div className="mt-6 flex justify-center">
         {Array.from({ length: Math.ceil(filteredPosts.length / postsPerPage) }, (_, index) => (

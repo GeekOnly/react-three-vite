@@ -3,121 +3,151 @@
       "id": 1,
       "name": "Bookmark 1",
       "description": "Description for bookmark 1",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Tech", "React"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+      "youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 2,
       "name": "Bookmark 2",
       "description": "Description for bookmark 2",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Design", "Web"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 3,
       "name": "Bookmark 3",
       "description": "Description for bookmark 3",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Tech", "React"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 4,
       "name": "Bookmark 4",
       "description": "Description for bookmark 4",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Design", "Web"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 5,
       "name": "Bookmark 5",
       "description": "Description for bookmark 5",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Tech", "JavaScript"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 6,
       "name": "Bookmark 6",
       "description": "Description for bookmark 6",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Design", "UI/UX"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 7,
       "name": "Bookmark 7",
       "description": "Description for bookmark 7",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Tech", "React"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 8,
       "name": "Bookmark 8",
       "description": "Description for bookmark 8",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Design", "Web"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 9,
       "name": "Bookmark 9",
       "description": "Description for bookmark 9",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Tech", "Vue"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 10,
       "name": "Bookmark 10",
       "description": "Description for bookmark 10",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Design", "UI/UX"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 11,
       "name": "Bookmark 11",
       "description": "Description for bookmark 11",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Tech", "Node.js"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 12,
       "name": "Bookmark 12",
       "description": "Description for bookmark 12",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Design", "Product Design"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 13,
       "name": "Bookmark 13",
       "description": "Description for bookmark 13",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Tech", "Web Development"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 14,
       "name": "Bookmark 14",
       "description": "Description for bookmark 14",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Design", "Web"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 15,
       "name": "Bookmark 15",
       "description": "Description for bookmark 15",
-      "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/jsm-logo.png",
       "tags": ["Tech", "JavaScript"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 16,
@@ -125,7 +155,8 @@
       "description": "Description for bookmark 16",
       "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
       "tags": ["Design", "UI/UX"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 17,
@@ -133,7 +164,8 @@
       "description": "Description for bookmark 17",
       "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
       "tags": ["Tech", "React Native"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 18,
@@ -141,7 +173,8 @@
       "description": "Description for bookmark 18",
       "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
       "tags": ["Design", "CSS"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 19,
@@ -149,7 +182,8 @@
       "description": "Description for bookmark 19",
       "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
       "tags": ["Tech", "Vue.js"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 20,
@@ -157,7 +191,8 @@
       "description": "Description for bookmark 20",
       "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
       "tags": ["Design", "Web"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     },
     {
       "id": 21,
@@ -165,7 +200,8 @@
       "description": "Description for bookmark 21",
       "image": "https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
       "tags": ["Tech", "Node.js"],
-      "url": "https://example.com"
+      "url": "https://example.com",
+"youtube":"https://www.youtube.com/@Theghostradio"
     }
   ]
   

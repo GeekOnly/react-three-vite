@@ -7,7 +7,6 @@
 }
 
 html,
-body,
 #root {
   width: 100%;
   height: 100%;
@@ -20,6 +19,10 @@ body,
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+body {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 @font-face {
@@ -66,4 +69,13 @@ body,
   height: 100%;
   display: block;
   overflow: hidden;
+}
+
+/* Animation */
+.max-w-sm:hover .p-5 {
+  transform: translateY(-20px); /* Move content upwards */
+}
+
+.transition-transform {
+  transition: transform 0.3s ease-in-out;
 }
