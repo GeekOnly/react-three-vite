@@ -18,7 +18,6 @@ createRoot(document.getElementById('root')).render(
     
     {/* Header added here */}
     <Navigation />
-
     
     {/* Home section */}
     <Element name="home" className="element" >

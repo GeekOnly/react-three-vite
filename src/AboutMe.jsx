@@ -1,9 +1,12 @@
-import { Profile } from "./components/Profile";
 import PhyscisSkill from "./components/SkillPhysics";
-import VehicleScene from "./GAME/TopDownVehicle";
 import PhongGameplay from "./GAME/PingPong/PongGame";
+import { useState } from "react";
 
 const AboutMe = () => {
+  const [count, setCount] = useState(1);
+  function getCount(newcount) {
+    setCount((prevCount) => prevCount + newcount); // Use functional form to get the latest state
+  }
   return (
     <div className="about-me-container p-6 sm:p-4 text-gray-100 w-full max-w-[95%] mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-6 sm:grid-rows-5 grid-rows-auto gap-4">
@@ -35,19 +38,27 @@ const AboutMe = () => {
         </div>
 
         {/* Skill Experience */}
-        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-stone-900 rounded-lg shadow-lg p-4">
+        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-stone-600 rounded-lg shadow-lg p-4">
           <div className="w-full h-[600px] overflow-hidden sm:block hidden">
-            <PhongGameplay />
+            <h3>{count}</h3>
+            <PhongGameplay getCount={getCount}/>
           </div>
         </div>
 
         {/* Education */}
         <div className="sm:col-span-2 sm:row-span-4 sm:col-start-1 sm:row-start-2 bg-stone-900 rounded-lg shadow-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-300 mt-2 mb-3">Skills</h3>
+        <h3 className="text-lg font-semibold text-gray-300 mt-2 mb-3">Skills</h3>
           <ul className="text-sm text-gray-300 list-disc pl-4 space-y-2">
-            <li><strong>Programming Languages:</strong> C++, C#, Python</li>
-            <li><strong>Game Engines:</strong> Unity, Unreal Engine</li>
-            <li><strong>Tools:</strong> Blender, Git, Substance Painter</li>
+          {count > 5 && (<li><strong>Programming Languages:</strong> C++, C#, Python</li>)}
+          {count > 10 &&<li><strong>Game Engines:</strong> Unity, Unreal Engine</li>}
+          {count > 15 &&<li><strong>Tools:</strong> Blender, Git, Substance Painter</li>}
+          {count > 20 &&<li><strong>Frameworks:</strong> .NET, Flask, Django</li>}
+          {count > 25 &&<li><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB</li>}
+          {count > 30 &&<li><strong>Version Control:</strong> Git, GitHub, GitLab</li>}
+          {count > 35 &&<li><strong>Cloud Services:</strong> AWS, Google Cloud, Azure</li>}
+          {count > 45 &&<li><strong>AI & Machine Learning:</strong> TensorFlow, PyTorch, Scikit-learn</li>}
+          {count > 55 &&<li><strong>Web Development:</strong> React, Next.js, Node.js</li>}
+          {count > 60 &&<li><strong>Game Development Techniques:</strong> ECS, Procedural Generation, Multiplayer Networking</li>}
           </ul>
         </div>
 

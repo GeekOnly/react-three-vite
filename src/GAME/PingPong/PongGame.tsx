@@ -4,6 +4,7 @@ import { Physics, useBox, useCircle, usePlane } from '@react-three/p2'
 import { useRef } from 'react'
 import * as THREE from 'three'
 import { proxy, useSnapshot } from 'valtio'
+import './styles.css'
 
 import earthImg from './resources/cross.jpg'
 import pingSound from './resources/ping.mp3'
@@ -27,7 +28,7 @@ const state = proxy({
   },
 })
 
-function Paddle({ speed = 10 }) {
+function Paddle({ speed = 10,getCount }) {
   const model = useRef()
   const maxSpeed = 10; // กำหนดความเร็วสูงสุดของ Paddle
   const pos = useRef([0, 0])
@@ -36,7 +37,10 @@ function Paddle({ speed = 10 }) {
   const [ref, api] = useBox(() => ({
     type: 'Kinematic',
     args: [3.3, 0.4],
-    onCollide: (e) => state.api.pong(e.contact.impactVelocity),
+    onCollide: (e) => {
+      state.api.pong(e.contact.impactVelocity)
+      getCount(1) // Update the count when the paddle collides
+    },  
   }))
   api.position.subscribe((p) => (pos.current = p))
 
@@ -125,10 +129,10 @@ function Ball() {
   )
 }
 
-export default function PhongGameplay({ ready = true }) {
+export default function PhongGameplay({ ready = true , getCount}) {
   return (
-    <Canvas shadows camera={{ position: [0, 5, 12], fov: 50 }}>
-      <color attach="background" args={['#171720']} />
+    <Canvas onCreated={state => state.gl.setClearColor("red")} shadows camera={{ position: [0, 5, 12], fov: 50 }}>
+      <color attach="background" args={['red']} />
       <ambientLight intensity={0.5} />
       <pointLight position={[-10, -10, -10]} />
       <spotLight
@@ -140,6 +144,7 @@ export default function PhongGameplay({ ready = true }) {
         shadow-mapSize={[2048, 2048]}
         shadow-bias={-0.0001}
       />
+      <Sky distance={450000} sunPosition={[1, 1, 0]} inclination={0.6} azimuth={0.25} />
       <Physics
         maxSubSteps={20}
         gravity={[0, -40]}
@@ -158,7 +163,7 @@ export default function PhongGameplay({ ready = true }) {
           <meshPhongMaterial color="#374037" />
         </mesh>
         {ready && <Ball />}
-        <Paddle />
+        <Paddle getCount={getCount} />
       </Physics>
     </Canvas>
   )
