@@ -14,10 +14,11 @@ import Header from './Header';
 import CreditPage from './CreditPage';
 
 createRoot(document.getElementById('root')).render(
+  <>
+    {/* Header added here */}
+    <Navigation className="navigation"/>
   <div>
     
-    {/* Header added here */}
-    <Navigation />
     
     {/* Home section */}
     <Element name="home" className="element" >
@@ -71,4 +72,5 @@ createRoot(document.getElementById('root')).render(
       <VehicleScene />
     </div>
   </div>
+  </>
 );

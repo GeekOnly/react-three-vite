@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function CreditPage() {
   return (
-    <div className="flex flex-col justify-center items-center bg-slate-800 p-8 text-center font-inter max-h-screen overflow-auto">
+      <div className="credit-page flex flex-col justify-center items-center bg-slate-800 p-8 text-center font-inter max-h-screen">
       {/* SubHeader Section */}
-      <div className="flex justify-around w-full mb-8">
+      <div className="flex  w-full mb-8">
         <h2 className="text-2xl font-semibold text-gray-600 flex-1">Developed by:</h2>
         <h2 className="text-2xl font-semibold text-gray-600 flex-1">Tools & Technologies:</h2>
         <h2 className="text-2xl font-semibold text-gray-600 flex-1">Special Thanks to:</h2>

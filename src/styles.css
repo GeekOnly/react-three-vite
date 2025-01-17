@@ -23,6 +23,8 @@ html,
 
 body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
+  padding-top: 60px; /* ปรับตามความสูงของ Navigation */
+
 }
 
 @font-face {
@@ -40,13 +42,20 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 .navigation {
-  position: fixed; /* หรือ absolute */
-  top: 25%;
-  right: -75px;
-  width: 10%; /* ครอบคลุมทั้งหน้าจอ */
-  height: 100%; /* ครอบคลุมทั้งหน้าจอ */
-  z-index: 9999; /* ให้แน่ใจว่าอยู่เหนือองค์ประกอบอื่น */
+  position: fixed; /* ให้ Navigation อยู่คงที่ที่ด้านบน */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* ทำให้ Navigation อยู่เหนือองค์ประกอบอื่น */
+  background-color: white; /* เพิ่มพื้นหลังเพื่อป้องกันการซ้อนทับ */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้เด่น */
+}
+
+.credit-page {
+  position: relative; /* ใช้ position เพื่อให้รองรับ z-index */
+  z-index: 1; /* กำหนดค่า z-index ให้น้อยกว่า Navigation */
 }
 
 .underlay-container {
@@ -86,4 +95,9 @@ body {
   left: 0;
   width: 100%;
   z-index: 10;
+}
+
+.text-container {
+  opacity: 85%;
+  transition: opacity 0.3s ease;
 }

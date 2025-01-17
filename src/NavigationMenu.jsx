@@ -1,144 +1,168 @@
-import React, { useState } from 'react';
-import { Link } from 'react-scroll';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import { Box, IconButton, Typography, Button, Drawer } from "@mui/material";
+import { Link as ScrollLink } from "react-scroll"; // Import the ScrollLink component from react-scroll
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
+import WorkIcon from "@mui/icons-material/Work";
+import BookIcon from "@mui/icons-material/Book";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
 
-// แยกการจัดการสไตล์ของ LeftMiddle
-const LeftMiddle = styled.div`
-  position: fixed;
-  top: 50%;
-  right: 2vw;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  @media (max-width: 768px) {
-    display: none; /* ซ่อนเมนูในมือถือ */
-  }
-`;
-
-const MobileNav = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10;
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  display: none; /* ซ่อนเมนูในเริ่มต้น */
-  transition: opacity 0.3s ease;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  
-  &.active {
-    display: flex; /* แสดงเมนูเมื่อเปิด */
-  }
-`;
-
-const StyledLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  font-size: 20px;
-  margin: 12px 0;
-  text-transform: uppercase;
-  position: relative;
-  transition: color 0.3s, transform 0.3s ease, padding-left 0.3s ease;
-
-  &:hover {
-    cursor: pointer;
-    color: #ff6347;
-    transform: scale(1.1);
-    padding-left: 10px;
-  }
-
-  &:focus {
-    color: rgb(160, 255, 71);
-    transform: scale(1.1);
-  }
-
-  &::before {
-    content: '→';
-    position: absolute;
-    left: -20px;
-    font-size: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
-`;
-
-const Hamburger = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 25px;
-  background: transparent;
-  border: none;
-  z-index: 20;
-  cursor: pointer;
-
-  div {
-    width: 30px;
-    height: 5px;
-    background-color: white;
-    transition: transform 0.3s ease;
-  }
-
-  &.open div:nth-child(1) {
-    transform: rotate(45deg) translateY(7px);
-  }
-
-  &.open div:nth-child(2) {
-    opacity: 0;
-  }
-
-  &.open div:nth-child(3) {
-    transform: rotate(-45deg) translateY(-7px);
-  }
-`;
+const menuItems = [
+  { id: "home", icon: <HomeIcon />, label: "Home" },
+  { id: "about", icon: <InfoIcon />, label: "About" },
+  { id: "projects", icon: <WorkIcon />, label: "Projects" },
+  { id: "blog", icon: <BookIcon />, label: "Blogs" },
+  { id: "contact", icon: <ContactMailIcon />, label: "Contact" },
+];
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleClick = (e, to) => {
-    console.log(`Clicked on: ${to}`);
-    console.log('Event:', e);
+  const handleSelect = (id) => {
+    setSelected(id);
   };
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
-    <div>
-      <nav className="navigation" >
-        <Hamburger className={isOpen ? 'open' : ''} onClick={toggleMenu}>
-          <div></div>
-          <div></div>
-          <div></div>
-        </Hamburger>
-    
-        <LeftMiddle className={isOpen ? 'active' : ''}>
-          <StyledLink to="home" smooth={true} duration={500} onClick={(e) => handleClick(e, 'home')}>Start</StyledLink>
-          <StyledLink to="about" smooth={true} duration={500} onClick={(e) => handleClick(e, 'about')}>About</StyledLink>
-          <StyledLink to="projects" smooth={true} duration={500} onClick={(e) => handleClick(e, 'projects')}>Projects</StyledLink>
-          <StyledLink to="blog" smooth={true} duration={500} onClick={(e) => handleClick(e, 'blog')}>Blogs</StyledLink>
-          <StyledLink to="bookmark" smooth={true} duration={500} onClick={(e) => handleClick(e, 'bookmark')}>Bookmark</StyledLink>
-          <StyledLink to="credit" smooth={true} duration={500} onClick={(e) => handleClick(e, 'credit')}>Credit</StyledLink>
-        </LeftMiddle>
-      </nav>
-    </div>
+    <Box
+      sx={{
+        position: "fixed",
+        top: "10%",
+        right: "0vw",
+        transform: "translateY(-50%)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-end",
+        padding: "20px",
+        zIndex: 1000, // Add z-index for layering
+      }}
+    >
+      {/* Mobile Menu Button */}
+      <Box
+        sx={{
+          display: { xs: "block", md: "none" }, // Show this button only on mobile (xs screen)
+          marginBottom: "20px",
+        }}
+      >
+        <Button
+          onClick={handleMobileMenuToggle}
+          sx={{
+            backgroundColor: "#ff6347",
+            color: "white",
+            "&:hover": {
+              backgroundColor: "#ff6347",
+            },
+          }}
+        >
+          Menu
+        </Button>
+      </Box>
+
+      {/* Mobile Drawer Menu */}
+      <Drawer
+        anchor="right"
+        open={isMobileMenuOpen}
+        onClose={handleMobileMenuToggle}
+        sx={{
+          display: { xs: "block", md: "none" }, // Only show on mobile
+        }}
+      >
+        <Box sx={{ padding: "20px" }}>
+          {menuItems.map((item) => (
+            <ScrollLink
+              key={item.id}
+              to={item.id} // The `to` prop should match the ID of the target section in your page
+              smooth={true} // Enable smooth scrolling
+              duration={500} // Set the scroll duration
+              offset={-70} // Optional: Adjust offset for fixed header (if needed)
+              onClick={() => {
+                handleSelect(item.id);
+                setIsMobileMenuOpen(false); // Close the menu after selecting an item
+              }}
+            >
+              <Button
+                fullWidth
+                sx={{
+                  marginBottom: "10px",
+                  backgroundColor: selected === item.id ? "#ff6347" : "transparent",
+                  color: selected === item.id ? "white" : "black",
+                  "&:hover": {
+                    backgroundColor: "#ff6347",
+                    color: "white",
+                  },
+                }}
+              >
+                {item.label}
+              </Button>
+            </ScrollLink>
+          ))}
+        </Box>
+      </Drawer>
+
+      {/* Desktop Navigation (Icon Buttons) */}
+      <Box sx={{ display: { xs: "none", md: "flex" }, flexDirection: "column", alignItems: "flex-end" }}>
+        {menuItems.map((item) => (
+          <Box
+            key={item.id}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              marginBottom: "10px",
+              position: "relative",
+            }}
+          >
+            {/* Text with Background Animation */}
+            <Box
+              className="text-container"
+              sx={{
+                position: "absolute",
+                left: "-110px", // Position the text
+                background: "rgba(255, 99, 71, 0.8)",
+                borderRadius: "20px",
+                padding: selected === item.id ? "5px 10px" : "0px",
+                color: "white",
+                fontSize: "14px",
+                fontWeight: "bold",
+                textAlign: "right",
+                transition: "width 0.3s ease, padding 0.3s ease, transform 0.3s ease", // Add transition for transform
+                width: selected === item.id ? "100px" : "0px", // Show text when selected
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                transform: selected === item.id ? "scaleX(1)" : "scaleX(0)", // Expand from right to left
+                transformOrigin: "right center", // Start the expansion from the right
+              }}
+            >
+              {item.label}
+            </Box>
+
+            {/* Icon Button */}
+            <ScrollLink
+              to={item.id} // The `to` prop should match the ID of the target section in your page
+              smooth={true} // Enable smooth scrolling
+              duration={500} // Set the scroll duration
+              offset={-70} // Optional: Adjust offset for fixed header (if needed)
+              onClick={() => handleSelect(item.id)} // Update the selected state on click
+            >
+              <IconButton
+                sx={{
+                  color: selected === item.id ? "#ff6347" : "white",
+                  backgroundColor: selected === item.id ? "rgba(255, 99, 71, 0.2)" : "transparent",
+                  "&:hover": {
+                    backgroundColor: "rgba(255, 99, 71, 0.2)",
+                  },
+                }}
+              >
+                {item.icon}
+              </IconButton>
+            </ScrollLink>
+          </Box>
+        ))}
+      </Box>
+    </Box>
   );
 }
