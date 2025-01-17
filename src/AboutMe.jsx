@@ -3,6 +3,68 @@ import PhongGameplay from "./GAME/PingPong/PongGame";
 import { useState } from "react"
 import IntroPhong from "./GAME/PingPong/Intro"
 import PhongGame3 from "./GAME/PhongGame3/PhongGame3";
+import { motion } from "framer-motion";
+import styled from "styled-components";
+
+const Body = styled.div`
+  text-align: center;
+  background-color: #ffcc8e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 100px; /* ระยะห่างระหว่างปุ่ม */
+  padding: 300px;
+`;
+
+const ButtonContainer = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+const ButtonLink = styled.a`
+  color: white;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 18px; /* ลดขนาดฟอนต์ */
+  text-align: center;
+  text-decoration: none;
+  background-color: #ffa12b;
+  display: block;
+  position: relative;
+  padding: 6px 10px; /* ลดขนาด padding */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-shadow: 0px 1px 0px #000;
+  filter: drop-shadow(0px 1px 0px #000);
+  box-shadow: inset 0 1px 0 #ffe5c4, 0 8px 0 #915100; /* ลดเงา */
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #ffc864; /* เปลี่ยนสีปุ่ม */
+    box-shadow: 0 0 15px 5px rgba(255, 255, 200, 0.8); /* เพิ่มแสงแบบ Glow */
+    transform: scale(1.05); /* ขยายเล็กน้อย */
+  }
+    
+  &:active {
+    top: 8px;
+    background-color: #f78900;
+    box-shadow: inset 0 1px 0 #ffe5c4, inset 0 -3px 0 #915100;
+  }
+`;
+
+const ButtonShadow = styled.div`
+  content: "";
+  height: 100%;
+  width: 100%;
+  padding: 4px;
+  position: absolute;
+  bottom: -10px; /* ลดระยะเงา */
+  left: 0;
+  z-index: -1;
+  background-color: #2b1800;
+  border-radius: 5px;
+`;
 
 const AboutMe = () => {
   const [count, setCount] = useState(1);
@@ -99,17 +161,46 @@ const AboutMe = () => {
            </p>
         </div>
 
-        {/* Profile Image */}
-        <div className="sm:row-span-2 sm:col-start-4 sm:row-start-3 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
-        <p className="text-sm w-full text-gray-300 mt-2">
-         <img
-           src="./Profile.jpg"
-           alt="Profile image description"
-           className="h-full w-full object-cover rounded-lg"
-         />
-       </p>
-        </div>
-
+        {/* Profile Image Section */}
+        <div className="sm:row-span-2 sm:col-start-4 sm:row-start-3 bg-slate-900 rounded-lg shadow-lg p-6 hover:bg-slate-800">
+          {/* Profile Image */}
+          <div className="w-full">
+            <img
+              src="./Profile.jpg"
+              alt="Profile image description"
+              className="h-full w-full object-cover rounded-lg"
+            />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "10px", // ระยะห่างระหว่างปุ่ม
+              marginTop: "20px", // เพิ่มระยะห่างจากโปรไฟล์ด้านบน
+            }}>
+    
+            {/* Zelda-Themed Buttons */}
+            <ButtonContainer>
+              <ButtonLink href="https://github.com/GeekOnly?tab=repositories" 
+              target="_blank" rel="noopener noreferrer">Github</ButtonLink>
+              <ButtonShadow />
+            </ButtonContainer>
+            {/* Contact Button */}
+            <ButtonContainer>
+              <ButtonLink href="#">Contact</ButtonLink>
+              <ButtonShadow />
+            </ButtonContainer>
+            {/* CV Button */}
+            <ButtonContainer>
+              <ButtonLink 
+              href="https://drive.google.com/file/d/1t_nE7JO7F5hiEhXaZh5a25ogMoMe2FBB/view?usp=sharing"
+              target="_blank" rel="noopener noreferrer">CV</ButtonLink>
+              <ButtonShadow />
+            </ButtonContainer>
+           </div>
+          </div>
+      
         {/* Passion */}
         <div className="sm:col-span-2 sm:col-start-3 sm:row-start-5 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
         <h2 className="text-xl font-bold text-gray-300 mt-2">Personal Projects</h2>
@@ -142,9 +233,8 @@ const AboutMe = () => {
         </div>
 
         {/* GAME */}
-        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
+        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800">
           <div className="w-full h-full overflow-hidden sm:block hidden">
-             <h3 className="text-center text-white text-3xl relative">{count}</h3>
              <PhongGame3 ready={true}/>
           </div>
         </div>

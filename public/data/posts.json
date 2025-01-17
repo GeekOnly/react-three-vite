@@ -3,78 +3,10 @@
     "id": 1,
     "title": "Creating Procedural Terrain in Unity",
     "summary": "A guide to generating procedural terrains using Unity's ECS system.",
-    "image": "/assets/DD.webp",
-    "notion": "https://past-ferryboat-19b.notion.site/Farming-Simulator-17b77707c20780e4b3f4d3071ca57e48?pvs=4",
-    "tags": ["Unity", "Procedural Generation", "Game Development", "Tech Art"]
-  },
-  {
-    "id": 2,
-    "title": "Dynamic Combat Animations in Unreal Engine",
-    "summary": "Exploring motion matching for dynamic combat animations in Unreal.",
-    "author": "Jane Doe",
-    "date": "2025-01-02",
-    "image": "/assets/Test.avif",
-    "content": "Learn how to implement motion matching in Unreal Engine to create seamless and realistic combat animations.",
-    "tags": ["Unreal", "Animation", "Tech Art", "Game Development"]
-  },
-  {
-    "id": 3,
-    "title": "Building a Full Stack Leaderboard System for Games",
-    "summary": "An end-to-end tutorial on building a leaderboard system using Node.js and React.",
-    "author": "Alice Cooper",
-    "date": "2025-01-03",
-    "image": "/assets/Test.avif",
-    "content": "This tutorial demonstrates how to set up a scalable leaderboard system for your game with a Node.js backend and React frontend.",
-    "tags": ["Full Stack", "Game Development", "React", "Node.js"]
-  },
-  {
-    "id": 4,
-    "title": "Optimizing Game Assets for Real-Time Rendering",
-    "summary": "Tips and techniques for optimizing assets in Unity and Unreal for better performance.",
-    "author": "Bob Lee",
-    "date": "2025-01-04",
-    "image": "/assets/Test.avif",
-    "content": "Discover how to optimize textures, meshes, and shaders for real-time rendering in game engines like Unity and Unreal.",
-    "tags": ["Tech Art", "Unity", "Unreal", "Optimization"]
-  },
-  {
-    "id": 5,
-    "title": "Creating Multiplayer Systems in Unity with Mirror",
-    "summary": "A step-by-step guide to implementing multiplayer using the Mirror library in Unity.",
-    "author": "Tom White",
-    "date": "2025-01-05",
-    "image": "/assets/Test.avif",
-    "content": "This blog covers the basics of setting up a multiplayer game in Unity using the Mirror networking library.",
-    "tags": ["Unity", "Multiplayer", "Game Development", "Networking"]
-  },
-  {
-    "id": 6,
-    "title": "Advanced Shader Techniques in Unreal Engine",
-    "summary": "Creating complex materials for realistic environments in Unreal Engine.",
-    "author": "Rachel Black",
-    "date": "2025-01-06",
-    "image": "/assets/Test.avif",
-    "content": "This article explores advanced shader techniques, including PBR workflows, in Unreal Engine for creating stunning visuals.",
-    "tags": ["Unreal", "Shaders", "Tech Art", "Game Development"]
-  },
-  {
-    "id": 7,
-    "title": "Integrating Backend Services into Your Game",
-    "summary": "A beginner-friendly guide to integrating backend services for player authentication and leaderboards.",
-    "author": "Eve Blue",
-    "date": "2025-01-07",
-    "image": "/assets/Test.avif",
-    "content": "Learn how to set up backend services like Firebase or AWS to manage game data efficiently.",
-    "tags": ["Full Stack", "Backend", "Game Development", "Firebase"]
-  },
-  {
-    "id": 8,
-    "title": "Creating a Voxel Renderer in Unity",
-    "summary": "A deep dive into building a voxel-based rendering engine using Unity.",
-    "author": "John Smith",
     "date": "2025-01-08",
-    "image": "/assets/Test.avif",
-    "content": "Explore how to create a voxel renderer from scratch in Unity and handle chunk loading efficiently.",
-    "tags": ["Unity", "Tech Art", "Rendering", "Game Development"]
+    "image": "/assets/DD.webp",
+    "hoverImage": "/assets/Test.avif",
+    "notion": "https://past-ferryboat-19b.notion.site/Farming-Simulator-17b77707c20780e4b3f4d3071ca57e48?pvs=4",
+    "tags": ["Unity", "Tech Art", "Procedural Generation", "Game Development"]
   }
 ]

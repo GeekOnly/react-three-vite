@@ -23,8 +23,6 @@ html,
 
 body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
-  padding-top: 60px; /* ปรับตามความสูงของ Navigation */
-
 }
 
 @font-face {

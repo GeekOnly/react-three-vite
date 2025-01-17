@@ -12,17 +12,17 @@ import { Element } from 'react-scroll'; // นำเข้า Element
 import VehicleScene from "./GAME/TopDownVehicle";
 import Header from './Header';
 import CreditPage from './CreditPage';
+import SceneContainer from './ModelViewer';
 
 createRoot(document.getElementById('root')).render(
   <>
     {/* Header added here */}
     <Navigation className="navigation"/>
   <div>
-    
-    
     {/* Home section */}
     <Element name="home" className="element" >
       <div id="home">
+        <SceneContainer/>
       </div>
     </Element>
 
