@@ -2,6 +2,7 @@ import PhyscisSkill from "./components/SkillPhysics";
 import PhongGameplay from "./GAME/PingPong/PongGame";
 import { useState } from "react"
 import IntroPhong from "./GAME/PingPong/Intro"
+import PhongGame3 from "./GAME/PhongGame3/PhongGame3";
 
 const AboutMe = () => {
   const [count, setCount] = useState(1);
@@ -145,7 +146,7 @@ const AboutMe = () => {
          <h3 className="text-6xl font-semibold text-gray-300 mt-2">GAME</h3>
           <div className="w-full h-[600px] overflow-hidden sm:block hidden">
             <h3>{count}</h3>
-            <PhongGameplay getCount={getCount}/>
+            <PhongGame3 ready={true}/>
           </div>
         </div>
 
