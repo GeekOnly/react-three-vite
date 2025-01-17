@@ -30,6 +30,11 @@ export default function CreditPage() {
             </a>
           </li>
           <li>Community Support</li>
+          <li>
+            <a href="https://r3f.docs.pmnd.rs/getting-started/introduction" target="_blank" className="text-orange-500 hover:text-red-600 transition-all duration-300 ease-in-out transform hover:scale-105">
+            r3f
+            </a>
+          </li>
         </ul>
       </div>
 
