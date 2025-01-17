@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Box, IconButton, Typography, BottomNavigation, BottomNavigationAction } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, IconButton, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import WorkIcon from "@mui/icons-material/Work";
@@ -21,6 +21,31 @@ export default function Navigation() {
   const handleSelect = (id) => {
     setSelected(id);
   };
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+
+      menuItems.forEach((item) => {
+        const element = document.getElementById(item.id);
+        if (element) {
+          const elementPosition = element.offsetTop;
+          const elementHeight = element.offsetHeight;
+
+          if (scrollPosition >= elementPosition - 80 && scrollPosition < elementPosition + elementHeight - 80) {
+            setSelected(item.id);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <Box sx={{ position: "relative" }}>
