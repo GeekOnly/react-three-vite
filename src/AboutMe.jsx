@@ -1,6 +1,7 @@
 import PhyscisSkill from "./components/SkillPhysics";
 import PhongGameplay from "./GAME/PingPong/PongGame";
-import { useState } from "react";
+import { useState } from "react"
+import IntroPhong from "./GAME/PingPong/Intro"
 
 const AboutMe = () => {
   const [count, setCount] = useState(1);
@@ -11,7 +12,7 @@ const AboutMe = () => {
     <div className=" about-me-container p-6 sm:p-4 text-gray-100 w-full max-w-[95%] mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-6 sm:grid-rows-5 grid-rows-auto gap-4 ">
         {/* Profile Picture */}
-        <div className="group sm:col-span-2 sm:col-start-1 sm:row-start-1 bg-slate-800 rounded-lg shadow-lg p-4">
+        <div className="group sm:col-span-2 sm:col-start-1 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
           <h2 className="text-xl font-bold text-gray-300 mt-2">Hi, I'm [Sanphet Somjit]</h2>
           <p className="text-sm text-gray-300 mt-2">
           "Hello, I'm BAS, a 27-year-old passionate about game development and technical art, especially shaders, VFX, and coding. I am dedicated to continuous learning and self-improvement, always seeking new opportunities to refine my skills and contribute to innovative projects."
@@ -19,7 +20,7 @@ const AboutMe = () => {
         </div>
 
         {/* Skills */}
-        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-1 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-1 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
         <h3 className="text-6xl font-semibold text-gray-300 mt-2 mb-3">Skills</h3>
         <ul className="text-sm text-gray-300 list-disc pl-4 space-y-2">
           <li><strong>Programming Languages:</strong> C++, C#, Go, JavaScript</li>
@@ -51,7 +52,7 @@ const AboutMe = () => {
         </div>
 
         {/* Work Experience */}
-      <div className="sm:col-span-2 sm:row-span-2 sm:col-start-3 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+      <div className="sm:col-span-2 sm:row-span-2 sm:col-start-3 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
           <h3 className="text-lg font-semibold text-gray-300 mt-2 mb-2">Work Experience</h3>
           {/* CORECELL Internship */}
           <div>
@@ -77,7 +78,7 @@ const AboutMe = () => {
         </div>
 
         {/* Future Goals */}
-        <div className="sm:col-start-3 sm:row-start-3 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <div className="sm:col-start-3 sm:row-start-3 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
         <h2 className="text-xl font-bold text-gray-300 mt-2">Future Goals</h2>
            <p className="text-sm text-gray-300 mt-2">
              - Master Vulkan.<br/>
@@ -87,7 +88,7 @@ const AboutMe = () => {
         </div>
 
         {/* Interests */}
-        <div className="sm:col-start-3 sm:row-start-4 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <div className="sm:col-start-3 sm:row-start-4 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
         <h2 className="text-xl font-bold text-gray-300 mt-2">Interests</h2>
            <p className="text-sm text-gray-300 mt-2">
              - Shader development and VFX.<br/>
@@ -98,7 +99,7 @@ const AboutMe = () => {
         </div>
 
         {/* Profile Image */}
-        <div className="sm:row-span-2 sm:col-start-4 sm:row-start-3 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <div className="sm:row-span-2 sm:col-start-4 sm:row-start-3 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
         <p className="text-sm w-full text-gray-300 mt-2">
          <img
            src="./Profile.jpg"
@@ -109,7 +110,7 @@ const AboutMe = () => {
         </div>
 
         {/* Passion */}
-        <div className="sm:col-span-2 sm:col-start-3 sm:row-start-5 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <div className="sm:col-span-2 sm:col-start-3 sm:row-start-5 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
         <h2 className="text-xl font-bold text-gray-300 mt-2">Personal Projects</h2>
            <p className="text-sm text-gray-300 mt-2">
              - Real-time multiplayer game engine (Node.js, React).<br/>
@@ -121,7 +122,7 @@ const AboutMe = () => {
         </div>
 
         {/* Personal Projects */}
-        <div className="sm:col-start-6 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <div className="sm:col-start-6 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
         <h2 className="text-xl font-bold text-gray-300 mt-2">Passion</h2>
            <p className="text-sm text-gray-300 mt-2">
              - Creating Game anything and anymore.<br/>
@@ -129,7 +130,7 @@ const AboutMe = () => {
         </div>
 
         {/* Education */}
-        <div className="sm:col-start-5 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <div className="sm:col-start-5 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
           <h3 className="text-lg font-semibold text-gray-300 mt-2">Education</h3>
           <p className="text-sm text-gray-300 mt-2">
             <strong>SPU</strong> Interactive and Game Design
@@ -140,7 +141,7 @@ const AboutMe = () => {
         </div>
 
         {/* GAME */}
-        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
          <h3 className="text-6xl font-semibold text-gray-300 mt-2">GAME</h3>
           <div className="w-full h-[600px] overflow-hidden sm:block hidden">
             <h3>{count}</h3>
