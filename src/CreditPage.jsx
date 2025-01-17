@@ -2,9 +2,7 @@ import React from 'react';
 
 export default function CreditPage() {
   return (
-    <div className="flex flex-col justify-center items-center bg-gray-100 p-8 text-center font-inter max-h-screen overflow-auto">
-      <h1 className="text-4xl font-bold text-gray-800 mb-8 uppercase">Project Credits</h1>
-
+    <div className="flex flex-col justify-center items-center bg-slate-800 p-8 text-center font-inter max-h-screen overflow-auto">
       {/* SubHeader Section */}
       <div className="flex justify-around w-full mb-8">
         <h2 className="text-2xl font-semibold text-gray-600 flex-1">Developed by:</h2>
@@ -34,17 +32,6 @@ export default function CreditPage() {
           <li>Community Support</li>
         </ul>
       </div>
-
-     <div >
-      {/* Contact Us Button */}
-      <button onClick={() => alert("Thank you!")} className="bg-orange-500 text-white py-3 px-8 rounded-lg text-lg cursor-pointer hover:bg-red-600 transition-all duration-300 ease-in-out">
-        Contact Us
-      </button>
-      {/* Contact Us Button */}
-      <button onClick={() => alert("Thank you!")} className="bg-orange-500 text-white py-3 px-8 rounded-lg text-lg cursor-pointer hover:bg-red-600 transition-all duration-300 ease-in-out">
-        Full Credit
-      </button>
-     </div>
 
     </div>
   );

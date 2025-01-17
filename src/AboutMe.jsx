@@ -143,10 +143,9 @@ const AboutMe = () => {
 
         {/* GAME */}
         <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
-         <h3 className="text-6xl font-semibold text-gray-300 mt-2">GAME</h3>
-          <div className="w-full h-[600px] overflow-hidden sm:block hidden">
-            <h3>{count}</h3>
-            <PhongGame3 ready={true}/>
+          <div className="w-full h-full overflow-hidden sm:block hidden">
+             <h3 className="text-center text-white text-3xl relative">{count}</h3>
+             <PhongGame3 ready={true}/>
           </div>
         </div>
 

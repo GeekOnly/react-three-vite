@@ -10,7 +10,7 @@ const BookmarkList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [selectedBookmark, setSelectedBookmark] = useState(null);
-  const bookmarksPerPage = 12;
+  const bookmarksPerPage = 15;
 
   const dropdownRef = useRef(null);
 

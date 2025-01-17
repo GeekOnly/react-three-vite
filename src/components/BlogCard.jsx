@@ -10,7 +10,7 @@ const BlogCard = React.memo(({ post }) => {
         alt={post.title} 
         loading="lazy"/>
       </a>
-      <div className="p-5">
+      <div className="p-3">
         <a href="#">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{post.title}</h5>
         </a>

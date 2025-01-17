@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import BlogCard from "./BlogCard";
-import BlogDetails from "./BlogDetails";
 
 const BlogList = () => {
   const [posts, setPosts] = useState([]);
@@ -200,15 +199,6 @@ const BlogList = () => {
           <BlogCard key={post.id} post={post} onClick={() => handleReadMore(post)} />
         ))}
       </div>
-
-      {/* Modal for BlogDetails */}
-      {showModal && selectedPost && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-4/5 md:w-3/4 lg:w-1/2">
-            <BlogDetails post={selectedPost} onBack={handleCloseModal} />
-          </div>
-        </div>
-      )}
 
       {/* Pagination */}
       <div className="mt-6 flex justify-center">

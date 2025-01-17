@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import { useCallback, useRef } from "react"
+import { useCallback, useRef, useState } from "react"
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Text, useGLTF, useTexture } from "@react-three/drei"
 import { Physics, RigidBody, CylinderCollider, CuboidCollider, BallCollider } from "@react-three/rapier"
@@ -26,28 +26,77 @@ const state = proxy({
 })
 
 export default function PhongGame3({ ready }) {
-  return (
-    <Canvas shadows dpr={[1, 1.5]} gl={{ antialias: false }} camera={{ position: [0, 5, 12], fov: 45 }}>
-      <color attach="background" args={["#f0f0f0"]} />
-      <ambientLight intensity={0.5 * Math.PI} />
-      <spotLight decay={0} position={[-10, 15, -5]} angle={1} penumbra={1} intensity={2} castShadow shadow-mapSize={1024} shadow-bias={-0.0001} />
-      <Physics gravity={[0, -40, 0]} timeStep="vary">
-        {ready && <Ball position={[0, 5, 0]} />}
-        <Paddle />
-      </Physics>
-      <EffectComposer disableNormalPass>
-        <N8AO aoRadius={0.5} intensity={2} />
-        <TiltShift2 blur={0.2} />
-        <ToneMapping />
-      </EffectComposer>
-      <Bg />
-    </Canvas>
-  )
-}
+    const [gameStarted, setGameStarted] = useState(false);
+    const [gameOver, setGameOver] = useState(false);
+  
+    const startGame = () => {
+      setGameStarted(true);
+      setGameOver(false);
+      state.api.reset();
+    };
+  
+    const handleGameOver = () => {
+      setGameOver(true);
+      setGameStarted(false);
+    };
+  
+    return (
+        <div className="w-[800] h-[600] bg-gray-900 p-4 gap-4 flex justify-center items-center">
+        {/* Game Canvas Area */}
+        <div className="bg-slate-700 rounded-lg shadow-lg relative overflow-hidden w-[500px] h-[650px]">
+          {/* Overlay UI */}
+          {!gameStarted && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 z-10">
+              <h1 className="text-4xl font-bold text-white mb-4">Ping Pong Game</h1>
+              {gameOver && <h2 className="text-2xl text-red-500 mb-4">Game Over!</h2>}
+              <button
+                onClick={startGame}
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md shadow-md"
+              >
+                {gameOver ? "Restart Game" : "Start Game"}
+              </button>
+            </div>
+          )}
+      
+          {/* Fullscreen Canvas */}
+          <Canvas
+            className="absolute inset-0"
+            shadows
+            dpr={[1, 1.5]}
+            gl={{ antialias: false }}
+            camera={{ position: [0, 10, 15], fov: 75 }}
+          >
+            <color attach="background" args={["#f0f0f0"]} />
+            <ambientLight intensity={0.5 * Math.PI} />
+            <spotLight
+              decay={0}
+              position={[-10, 15, -5]}
+              angle={1}
+              penumbra={1}
+              intensity={2}
+              castShadow
+              shadow-mapSize={1024}
+              shadow-bias={-0.0001}
+            />
+            <Physics gravity={[0, -40, 0]} timeStep="vary">
+              {gameStarted && <Ball position={[0, 5, 0]} onGameOver={handleGameOver} />}
+              {gameStarted && <Paddle />}
+            </Physics>
+            <EffectComposer disableNormalPass>
+              <N8AO aoRadius={0.5} intensity={2} />
+              <TiltShift2 blur={0.2} />
+              <ToneMapping />
+            </EffectComposer>
+            <Bg />
+          </Canvas>
+        </div>
+      </div>
+    );
+  }
 
 function Paddle({ vec = new THREE.Vector3(), dir = new THREE.Vector3() }) {
-  const api = useRef()
-  const model = useRef()
+    const api = useRef()
+    const model = useRef()
   const { count } = useSnapshot(state)
   const { nodes, materials } = useGLTF("/pingpong.glb")
   const contactForce = useCallback((payload) => {
@@ -88,15 +137,15 @@ function Paddle({ vec = new THREE.Vector3(), dir = new THREE.Vector3() }) {
   )
 }
 
-function Ball(props) {
+function Ball({ onGameOver, ...props }) {
   const api = useRef()
   const map = useTexture(logo)
   const { viewport } = useThree()
   const onCollisionEnter = useCallback(() => {
-    state.api.reset()
+    onGameOver()
     api.current.setTranslation({ x: 0, y: 5, z: 0 })
     api.current.setLinvel({ x: 0, y: 5, z: 0 })
-  }, [])
+  }, [onGameOver])
   return (
     <group {...props}>
       <RigidBody ccd ref={api} angularDamping={0.8} restitution={1} canSleep={false} colliders={false} enabledTranslations={[true, true, false]}>

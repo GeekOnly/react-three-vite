@@ -34,7 +34,7 @@
   flex-direction: column;
   justify-content: flex-start; /* จัดให้อยู่ที่ด้านบน */
   align-items: flex-start;
-  background-color: #ffffff;
+  background-color: #f2f2f2;
   color: #333333;
   padding: 10px;
   height: 35%; 
