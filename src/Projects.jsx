@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Center, OrbitControls } from '@react-three/drei';
 
@@ -22,6 +22,7 @@ const groupedProjects = myProjects.reduce((acc, project) => {
 const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
   const [currentType, setCurrentType] = useState(Object.keys(groupedProjects)[0]); // Default to the first type
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const projectsByType = groupedProjects[currentType] || [];
   const currentProject = projectsByType[selectedProjectIndex];
@@ -45,27 +46,36 @@ const Projects = () => {
     gsap.fromTo(`.animatedText`, { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.2, ease: 'power2.inOut' });
   }, [selectedProjectIndex, currentType]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = windowWidth <= 768; // Adjust breakpoint as needed
+
   return (
     <section className="c-space my-20 relative">
-       {/* Category Tabs */}
-       <section className="c-space my-20 relative">
-         {/* Category Tabs */}
-         <div className="category-tabs flex gap-5 mb-10">
-           {Object.keys(groupedProjects).map((type) => (
-             <button
-               type="button"
-               key={type}
-               className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-900 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-               onClick={() => handleCategoryChange(type)}
-             >
-               {type}
-               <span className="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
-                 {groupedProjects[type].length} {/* จำนวนโปรเจกต์ในประเภทนี้ */}
-               </span>
-             </button>
-           ))}
-         </div>
-       </section>
+      {/* Category Tabs */}
+      <section className="c-space my-20 relative">
+        <div className="category-tabs flex gap-5 mb-10">
+          {Object.keys(groupedProjects).map((type) => (
+            <button
+              type="button"
+              key={type}
+              className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-900 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              onClick={() => handleCategoryChange(type)}
+            >
+              {type}
+              <span className="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+                {groupedProjects[type].length} {/* จำนวนโปรเจกต์ในประเภทนี้ */}
+              </span>
+            </button>
+          ))}
+        </div>
+      </section>
 
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
         {/* Project Details */}
@@ -88,10 +98,11 @@ const Projects = () => {
             <div className="flex items-center gap-3">
               {currentProject.tags.map((tag, index) => (
                 <div key={index} className="tech-logo">
-                  <img 
-                  src={tag.path} 
-                  alt={tag.name}
-                  style={{ width: '60px', height: '60px', objectFit: 'contain' }} />
+                  <img
+                    src={tag.path}
+                    alt={tag.name}
+                    style={{ width: '60px', height: '60px', objectFit: 'contain' }}
+                  />
                 </div>
               ))}
             </div>
@@ -130,7 +141,11 @@ const Projects = () => {
                 </group>
               </Suspense>
             </Center>
-            <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
+            <OrbitControls
+              maxPolarAngle={Math.PI / 2}
+              enableZoom={isMobile ? false : true}  // Disable zoom for mobile
+              enablePan={!isMobile} // Disable pan for mobile
+            />
           </Canvas>
         </div>
       </div>

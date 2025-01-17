@@ -17,6 +17,7 @@ const menuItems = [
 
 export default function Navigation() {
   const [selected, setSelected] = useState("home");
+  const [showHome, setShowHome] = useState(true);  // State to control the visibility of the Home component
 
   const handleSelect = (id) => {
     setSelected(id);

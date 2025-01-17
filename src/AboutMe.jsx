@@ -144,9 +144,10 @@ const AboutMe = () => {
         <div className="sm:col-start-3 sm:row-start-3 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
         <h2 className="text-xl font-bold text-gray-300 mt-2">Future Goals</h2>
            <p className="text-sm text-gray-300 mt-2">
-             - Master Vulkan.<br/>
-             - Build my own game engine<br/>
-             - Improve multiplayer game systems<br/>
+           <li>Become a Master in Game Dev</li>
+           <li>Develop my own game engine</li>
+           <li>Design and implement multiplayer</li>
+           <li>Create interactive and immersive VFX</li>
            </p>
         </div>
 
@@ -154,10 +155,10 @@ const AboutMe = () => {
         <div className="sm:col-start-3 sm:row-start-4 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
         <h2 className="text-xl font-bold text-gray-300 mt-2">Interests</h2>
            <p className="text-sm text-gray-300 mt-2">
-             - Shader development and VFX.<br/>
-             - AI programming.<br/>
-             - Real-time multiplayer systems.<br/>
-             - Low-level graphics programming.
+             <li>Game Developemnt : Unity, Unreal<br/></li>
+             <li>Shader development and VFX.<br/></li>
+             <li>Online Game Multiplayer.<br/></li>
+             <li>Graphic Programming<br/></li>
            </p>
         </div>
 
@@ -205,10 +206,10 @@ const AboutMe = () => {
         <div className="sm:col-span-2 sm:col-start-3 sm:row-start-5 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
         <h2 className="text-xl font-bold text-gray-300 mt-2">Personal Projects</h2>
            <p className="text-sm text-gray-300 mt-2">
-             - Real-time multiplayer game engine (Node.js, React).<br/>
-             - Procedural world generation with Flecs ECS and Vulkan.<br/>
-             - Shader-based adventure game with dynamic visuals.<br/>
-             - AI-driven NPC behavior with procedural content generation.
+            <li>SPU Game Thesis</li>
+            <li>Unity Mini Game</li>
+            <li>MMO Unity Game With Custom Server</li>
+            <li>Web Application</li>
            </p>
         
         </div>
