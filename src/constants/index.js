@@ -58,58 +58,20 @@ export const clientReviews = [
 
 export const myProjects = [
   {
-    title: 'Podcastr - AI Podcast Platform',
-    desc: 'Podcastr is a revolutionary Software-as-a-Service platform that transforms the way podcasts are created. With advanced AI-powered features like text-to-multiple-voices functionality, it allows creators to generate diverse voiceovers from a single text input.',
+    title: 'SPU Thesis - Leaf Game',
+    desc: '"Left Game" is a Puzzle Action Adventure game developed using Unreal Engine. The game introduces an innovative mechanic that allows players to manipulate the environment by switching between four distinct settings: Green (lush nature), Lava (volcanic terrain), Snow (winter landscapes), and Ice (frozen surfaces). These environmental changes are crucial for solving puzzles and overcoming combat challenges.',
     subdesc:
-      'Built as a unique Software-as-a-Service app with Next.js 14, Tailwind CSS, TypeScript, Framer Motion and Convex, Podcastr is designed for optimal performance and scalability.',
-    href: 'https://www.youtube.com/watch?v=zfAb95tJvZQ',
-    texture: '/textures/project/project1.mp4',
-    logo: '/assets/project-logo1.png',
+      'Players can dynamically shift the world’s state to adapt to obstacles and uncover hidden paths. Each environment offers unique properties:',
+    href: 'https://past-ferryboat-19b.notion.site/Sripatum-University-Thesis-Left-Game-17b77707c207804ca9d2c282561c4ee1?pvs=4',
+    texture: '/textures/project/project6.mp4',
+    logo: '/assets/IGD-Logo.jpg',
     logoStyle: {
-      backgroundColor: '#2A1816',
-      border: '0.2px solid #36201D',
-      boxShadow: '0px 0px 60px 0px #AA3C304D',
+      backgroundColor: '#0E1F38',
+      border: '0.2px solid #0E2D58',
+      boxShadow: '0px 0px 60px 0px #2F67B64D',
     },
-    spotlight: '/assets/spotlight1.png',
-    type:'Multiplayer',
-    tags: [
-      {
-        id: 1,
-        name: 'React.js',
-        path: '/assets/react.svg',
-      },
-      {
-        id: 2,
-        name: 'TailwindCSS',
-        path: 'assets/tailwindcss.png',
-      },
-      {
-        id: 3,
-        name: 'TypeScript',
-        path: '/assets/typescript.png',
-      },
-      {
-        id: 4,
-        name: 'Framer Motion',
-        path: '/assets/framer.png',
-      },
-    ],
-  },
-  {
-    title: 'SPU Game PRoject : Leaf Game',
-    desc: 'Unreal Game Envirotment change with skill',
-    subdesc:
-      'With LiveDoc, users can experience the future of collaboration, where multiple contributors work together in real time without any lag, by using Next.js and Liveblocks newest features.',
-    href: 'https://www.youtube.com/watch?v=y5vE8y_f_OM',
-    texture: '/textures/project/project1.mp4',
-    logo: '/assets/project-logo2.png',
-    logoStyle: {
-      backgroundColor: '#13202F',
-      border: '0.2px solid #17293E',
-      boxShadow: '0px 0px 60px 0px #2F6DB54D',
-    },
-    spotlight: '/assets/spotlight2.png',
-    type:'Game',
+    spotlight: '/assets/spotlight4.png',
+    type:'GAME',
     tags: [
       {
         id: 1,
@@ -118,80 +80,19 @@ export const myProjects = [
       },
       {
         id: 2,
-        name: 'C++',
-        path: 'assets/C++.png',
+        name: 'BP',
+        path: 'assets/BP.jpg',
       }
     ],
   },
-    {
-      title: 'SPU Game PRoject : Leaf Game 2',
-      desc: 'Unreal Game Envirotment change with skill',
-      subdesc:
-        'With LiveDoc, users can experience the future of collaboration, where multiple contributors work together in real time without any lag, by using Next.js and Liveblocks newest features.',
-      href: 'https://www.youtube.com/watch?v=y5vE8y_f_OM',
-      texture: '/textures/project/project2.mp4',
-      logo: '/assets/project-logo2.png',
-      logoStyle: {
-        backgroundColor: '#13202F',
-        border: '0.2px solid #17293E',
-        boxShadow: '0px 0px 60px 0px #2F6DB54D',
-      },
-      spotlight: '/assets/spotlight2.png',
-      type:'Game',
-      tags: [
-        {
-          id: 1,
-          name: 'Unreal',
-          path: '/assets/Unreal.png',
-        }
-      ],
-  },
   {
-    title: 'Horizon - Online Banking Platform',
-    desc: 'Horizon is a comprehensive online banking platform that offers users a centralized finance management dashboard. It allows users to connect multiple bank accounts, monitor real-time transactions, and seamlessly transfer money to other users.',
+    title: 'Unreal Anime Shader Custom Engine Rendering',
+    desc: 'This project focuses on creating an anime-style cel shading system within Unreal Engine, inspired by the distinctive rendering techniques of Arc System Works. By customizing the Render Pipeline and tweaking Material UI settings, the project enhances Unreal Enginecapability to achieve high-quality anime visuals that blend 2D and 3D aesthetics seamlessly.',
     subdesc:
-      'Built with Next.js 14 Appwrite, Dwolla and Plaid, Horizon ensures a smooth and secure banking experience, tailored to meet the needs of modern consumers.',
-    href: 'https://www.youtube.com/watch?v=PuOVqP_cjkE',
-    texture: '/textures/project/project4.mp4',
-    logo: '/assets/project-logo4.png',
-    logoStyle: {
-      backgroundColor: '#0E1F38',
-      border: '0.2px solid #0E2D58',
-      boxShadow: '0px 0px 60px 0px #2F67B64D',
-    },
-    spotlight: '/assets/spotlight4.png',
-    type:'Full Stack',
-    tags: [
-      {
-        id: 1,
-        name: 'React.js',
-        path: '/assets/react.svg',
-      },
-      {
-        id: 2,
-        name: 'TailwindCSS',
-        path: 'assets/tailwindcss.png',
-      },
-      {
-        id: 3,
-        name: 'TypeScript',
-        path: '/assets/typescript.png',
-      },
-      {
-        id: 4,
-        name: 'Framer Motion',
-        path: '/assets/framer.png',
-      },
-    ],
-  },
-  {
-    title: 'Imaginify - AI Photo Manipulation App',
-    desc: 'Imaginify is a groundbreaking Software-as-a-Service application that empowers users to create stunning photo manipulations using AI technology. With features like AI-driven image editing, a payments system, and a credits-based model.',
-    subdesc:
-      'Built with Next.js 14, Cloudinary AI, Clerk, and Stripe, Imaginify combines cutting-edge technology with a user-centric approach. It can be turned into a side income or even a full-fledged business.',
-    href: 'https://www.youtube.com/watch?v=Ahwoks_dawU',
-    texture: '/textures/project/project5.mp4',
-    logo: '/assets/project-logo5.png',
+      'This project showcases the creation of a cutting-edge anime-style cel shading system in Unreal Engine. By refining the Render Pipeline and optimizing Material UI settings, it highlights the engine ability to produce seamless 2D and 3D anime-inspired visuals with exceptional quality and precision.',
+    href: 'https://www.notion.so/Unreal-Anime-Shader-Custom-Engine-Rendering-17b77707c2078057ba26c09dc819d0c9?pvs=4',
+    texture: '/textures/project/CelShader.mp4',
+    logo: '/assets/IGD-Logo.jpg',
     logoStyle: {
       backgroundColor: '#1C1A43',
       border: '0.2px solid #252262',
@@ -202,24 +103,9 @@ export const myProjects = [
     tags: [
       {
         id: 1,
-        name: 'React.js',
-        path: '/assets/react.svg',
-      },
-      {
-        id: 2,
-        name: 'TailwindCSS',
-        path: 'assets/tailwindcss.png',
-      },
-      {
-        id: 3,
-        name: 'TypeScript',
-        path: '/assets/typescript.png',
-      },
-      {
-        id: 4,
-        name: 'Framer Motion',
-        path: '/assets/framer.png',
-      },
+        name: 'Unreal',
+        path: '/assets/Unreal.png',
+      }
     ],
   },
 ];

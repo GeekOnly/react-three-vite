@@ -8,75 +8,98 @@ const AboutMe = () => {
     setCount((prevCount) => prevCount + newcount); // Use functional form to get the latest state
   }
   return (
-    <div className="about-me-container p-6 sm:p-4 text-gray-100 w-full max-w-[95%] mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-6 sm:grid-rows-5 grid-rows-auto gap-4">
+    <div className=" about-me-container p-6 sm:p-4 text-gray-100 w-full max-w-[95%] mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-6 sm:grid-rows-5 grid-rows-auto gap-4 ">
         {/* Profile Picture */}
-        <div className="sm:col-start-5 sm:row-start-1 bg-stone-900 rounded-lg shadow-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-300 mt-2">Notable Projects</h3>
+        <div className="group sm:col-span-2 sm:col-start-1 sm:row-start-1 bg-slate-800 rounded-lg shadow-lg p-4">
+          <h2 className="text-xl font-bold text-gray-300 mt-2">Hi, I'm [Sanphet Somjit]</h2>
           <p className="text-sm text-gray-300 mt-2">
-            <strong>Survival Zombie 2D:</strong> Developed combat mechanics and AI behaviors for a 2D top-down shooter.
-          </p>
-        </div>
-
-        {/* Introduction */}
-        <div className="sm:col-start-3 sm:row-start-3 bg-stone-900 rounded-lg shadow-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-300 mt-2">Future Goals</h3>
-          <p className="text-sm text-gray-300 mt-2">
-            Continue improving my skills in AI and procedural generation while creating immersive virtual worlds.
-          </p>
+          "Hello, I'm BAS, a 27-year-old passionate about game development and technical art, especially shaders, VFX, and coding. I am dedicated to continuous learning and self-improvement, always seeking new opportunities to refine my skills and contribute to innovative projects."
+</p>
         </div>
 
         {/* Skills */}
-        <div className="sm:col-span-2 sm:col-start-3 sm:row-start-5 bg-slate-950 rounded-lg shadow-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-300 mt-2">Passion</h3>
-          <p className="text-sm text-gray-300 mt-2">
-            <strong>Survival Zombie 2D:</strong> Developed combat mechanics and AI behaviors for a 2D top-down shooter.
-          </p>
-          <p className="text-sm text-gray-300">
-            Check out my <a href="https://github.com" className="text-blue-600 underline">GitHub</a> for more projects.
-          </p>
+        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-1 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <h3 className="text-6xl font-semibold text-gray-300 mt-2 mb-3">Skills</h3>
+        <ul className="text-sm text-gray-300 list-disc pl-4 space-y-2">
+          <li><strong>Programming Languages:</strong> C++, C#, Go, JavaScript</li>
+          <li><strong>Game Engines:</strong> Unity, Unreal Engine</li>
+          <li><strong>Tech Art:</strong> Unreal Material/Niagara, Unity ShaderGraph, UnityCG, VFX Graph, HLSL</li>
+          <li><strong>Game Development Skills:</strong>
+            <ul className="list-disc pl-4 space-y-1">
+              <li><strong>Multiplayer Systems:</strong> Design and implementation of real-time multiplayer functionality.</li>
+              <li><strong>Flecs ECS:</strong> Experience with Entity Component System architecture using Flecs.</li>
+              <li><strong>Game Design Patterns:</strong> Command, Singleton, OOP for structuring game systems.</li>
+              <li><strong>Game AI and Animation Technical:</strong> Designing AI behaviors and animation blending techniques.</li>
+              <li><strong>Physics Programming:</strong> 2D/3D physics engines, SAT Collision Detection, Spatial Hashing.</li>
+            </ul>
+          </li>
+          <li><strong>Graphics API:</strong>
+            <ul className="list-disc pl-4 space-y-1">
+              <li><strong>OpenGL:</strong> Graphics rendering API used for cross-platform graphics applications.</li>
+              <li><strong>Vulkan:</strong> Low-level graphics API offering high performance and control over the GPU.</li>
+              <li><strong>Three.js:</strong> JavaScript library for 3D graphics in the web browser, built on top of WebGL.</li>
+              <li><strong>Fiber React:</strong> A React library for building high-performance user interfaces, with a focus on animation.</li>
+            </ul>
+          </li>
+          <li><strong>3D Tools:</strong> Maya, Houdini, ZBrush, Blender</li>
+          <li><strong>Adobe Tools:</strong> Photoshop, After Effects, Lightroom, Substance 3D Painter</li>
+          <li><strong>Version Control:</strong> GitHub, GitLab, Git Desktop, Git Fork</li>
+          <li><strong>Databases:</strong> PostgreSQL</li>
+          <li><strong>Web Development:</strong> React, Node.js</li>
+        </ul>
         </div>
 
-        {/* Skill Experience */}
-        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-stone-600 rounded-lg shadow-lg p-4">
-          <div className="w-full h-[600px] overflow-hidden sm:block hidden">
-            <h3>{count}</h3>
-            <PhongGameplay getCount={getCount}/>
+        {/* Work Experience */}
+      <div className="sm:col-span-2 sm:row-span-2 sm:col-start-3 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+          <h3 className="text-lg font-semibold text-gray-300 mt-2 mb-2">Work Experience</h3>
+          {/* CORECELL Internship */}
+          <div>
+            <h4 className="text-md font-semibold text-gray-300">CORECELL Internship Aug - Dec 2020</h4>
+            <p className="text-sm text-gray-300">
+              <strong>Anime Shader Research</strong>
+            </p>
+            <p className="text-sm text-gray-300 mt-2">
+            Developed shaders to create anime-style rendering effects in Unreal Engine. The project aimed to produce an in-game model with a distinct anime aesthetic, using advanced shading techniques for a visually appealing result.
+            </p>
+          </div>
+    
+          {/* The Monk Games */}
+          <div className="mt-4">
+            <h4 className="text-md font-semibold text-gray-300">THE MONK GAMES CO., LTD</h4>
+            <p className="text-sm text-gray-300">
+              <strong>Unreal Game Developer Internship</strong>
+            </p>
+            <p className="text-sm text-gray-300 mt-2">
+            Contributed to a cross-platform 3D open-world multiplayer game. Responsibilities included creating character animations with Unreal Engine's Blueprint system and implementing gameplay logic for seamless online multiplayer experiences.
+            </p>
           </div>
         </div>
 
-        {/* Education */}
-        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-1 sm:row-start-2 bg-stone-900 rounded-lg shadow-lg p-4">
-        <h3 className="text-lg font-semibold text-gray-300 mt-2 mb-3">Skills</h3>
-          <ul className="text-sm text-gray-300 list-disc pl-4 space-y-2">
-          {count > 5 && (<li><strong>Programming Languages:</strong> C++, C#, Python</li>)}
-          {count > 10 &&<li><strong>Game Engines:</strong> Unity, Unreal Engine</li>}
-          {count > 15 &&<li><strong>Tools:</strong> Blender, Git, Substance Painter</li>}
-          {count > 20 &&<li><strong>Frameworks:</strong> .NET, Flask, Django</li>}
-          {count > 25 &&<li><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB</li>}
-          {count > 30 &&<li><strong>Version Control:</strong> Git, GitHub, GitLab</li>}
-          {count > 35 &&<li><strong>Cloud Services:</strong> AWS, Google Cloud, Azure</li>}
-          {count > 45 &&<li><strong>AI & Machine Learning:</strong> TensorFlow, PyTorch, Scikit-learn</li>}
-          {count > 55 &&<li><strong>Web Development:</strong> React, Next.js, Node.js</li>}
-          {count > 60 &&<li><strong>Game Development Techniques:</strong> ECS, Procedural Generation, Multiplayer Networking</li>}
-          </ul>
+        {/* Future Goals */}
+        <div className="sm:col-start-3 sm:row-start-3 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <h2 className="text-xl font-bold text-gray-300 mt-2">Future Goals</h2>
+           <p className="text-sm text-gray-300 mt-2">
+             - Master Vulkan.<br/>
+             - Build my own game engine<br/>
+             - Improve multiplayer game systems<br/>
+           </p>
         </div>
 
         {/* Interests */}
-        <div className="sm:col-span-2 sm:row-span-2 sm:col-start-3 sm:row-start-1 bg-stone-900 rounded-lg shadow-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-300 mt-2 mb-2">Work Experience</h3>
-          <p className="text-sm text-gray-300">
-            <strong>Game Developer at XYZ Studio</strong>
-          </p>
-          <ul className="text-sm list-disc pl-4 space-y-1 mt-2">
-            <li>Developed game mechanics for an open-world RPG.</li>
-            <li>Collaborated with the art team to integrate models and animations.</li>
-          </ul>
+        <div className="sm:col-start-3 sm:row-start-4 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <h2 className="text-xl font-bold text-gray-300 mt-2">Interests</h2>
+           <p className="text-sm text-gray-300 mt-2">
+             - Shader development and VFX.<br/>
+             - AI programming.<br/>
+             - Real-time multiplayer systems.<br/>
+             - Low-level graphics programming.
+           </p>
         </div>
 
-        {/* Notable Projects */}
-        <div className="sm:row-span-2 sm:col-start-4 sm:row-start-3 bg-stone-900 rounded-lg shadow-lg p-4">
-        <p className="text-sm text-gray-300 mt-2">
+        {/* Profile Image */}
+        <div className="sm:row-span-2 sm:col-start-4 sm:row-start-3 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <p className="text-sm w-full text-gray-300 mt-2">
          <img
            src="./Profile.jpg"
            alt="Profile image description"
@@ -85,29 +108,46 @@ const AboutMe = () => {
        </p>
         </div>
 
-        {/* Future Goals */}
-        <div className="sm:col-start-6 sm:row-start-1 bg-stone-900 rounded-lg shadow-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-300 mt-2">Personal Projects</h3>
-          <p className="text-sm text-gray-300 mt-2">
-            Building a custom game engine and working on a 3D physics-based game prototype.
-          </p>
+        {/* Passion */}
+        <div className="sm:col-span-2 sm:col-start-3 sm:row-start-5 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <h2 className="text-xl font-bold text-gray-300 mt-2">Personal Projects</h2>
+           <p className="text-sm text-gray-300 mt-2">
+             - Real-time multiplayer game engine (Node.js, React).<br/>
+             - Procedural world generation with Flecs ECS and Vulkan.<br/>
+             - Shader-based adventure game with dynamic visuals.<br/>
+             - AI-driven NPC behavior with procedural content generation.
+           </p>
+        
         </div>
 
         {/* Personal Projects */}
-        <div className="sm:col-span-2 sm:col-start-1 sm:row-start-1 bg-stone-900 rounded-lg shadow-lg p-4">
-          <h2 className="text-xl font-bold text-gray-300 mt-2">Hi, I'm [Your Name]</h2>
+        <div className="sm:col-start-6 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+        <h2 className="text-xl font-bold text-gray-300 mt-2">Passion</h2>
+           <p className="text-sm text-gray-300 mt-2">
+             - Creating Game anything and anymore.<br/>
+           </p>
+        </div>
+
+        {/* Education */}
+        <div className="sm:col-start-5 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+          <h3 className="text-lg font-semibold text-gray-300 mt-2">Education</h3>
           <p className="text-sm text-gray-300 mt-2">
-            A passionate Game Developer and Tech Artist with a focus on creating immersive gameplay experiences and cutting-edge game graphics.
+            <strong>SPU</strong> Interactive and Game Design
+          </p>
+          <p className="text-sm text-gray-300 mt-2">
+            <strong>NETC</strong> Computer Technology
           </p>
         </div>
 
-        {/* Recent Publications */}
-        <div className="sm:col-start-3 sm:row-start-4 bg-stone-900 rounded-lg shadow-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-300 mt-2">Interests</h3>
-          <p className="text-sm text-gray-300 mt-2">
-            Exploring new game mechanics, VR/AR technologies, and participating in game jams.
-          </p>
+        {/* GAME */}
+        <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 group-hover:animate-glow">
+         <h3 className="text-6xl font-semibold text-gray-300 mt-2">GAME</h3>
+          <div className="w-full h-[600px] overflow-hidden sm:block hidden">
+            <h3>{count}</h3>
+            <PhongGameplay getCount={getCount}/>
+          </div>
         </div>
+
       </div>
     </div>
   );

@@ -35,15 +35,17 @@ export default function CreditPage() {
         </ul>
       </div>
 
+     <div >
       {/* Contact Us Button */}
       <button onClick={() => alert("Thank you!")} className="bg-orange-500 text-white py-3 px-8 rounded-lg text-lg cursor-pointer hover:bg-red-600 transition-all duration-300 ease-in-out">
         Contact Us
       </button>
+      {/* Contact Us Button */}
+      <button onClick={() => alert("Thank you!")} className="bg-orange-500 text-white py-3 px-8 rounded-lg text-lg cursor-pointer hover:bg-red-600 transition-all duration-300 ease-in-out">
+        Full Credit
+      </button>
+     </div>
 
-      {/* Footer */}
-      <footer className="mt-16 text-gray-500 text-sm">
-        &copy; 2025 Your Company. All rights reserved.
-      </footer>
     </div>
   );
 }

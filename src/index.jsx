@@ -22,7 +22,6 @@ createRoot(document.getElementById('root')).render(
     {/* Home section */}
     <Element name="home" className="element" >
       <div id="home">
-       <App />
       </div>
     </Element>
 

@@ -55,7 +55,7 @@ const Projects = () => {
              <button
                type="button"
                key={type}
-               className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+               className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-900 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                onClick={() => handleCategoryChange(type)}
              >
                {type}
@@ -69,7 +69,7 @@ const Projects = () => {
 
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
         {/* Project Details */}
-        <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200 rounded-xl bg-neutral-700">
+        <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200 rounded-xl bg-slate-800">
           <div className="absolute top-0 right-0">
             <img src={currentProject.spotlight} alt="spotlight" className="w-full h-96 object-cover rounded-xl" />
           </div>
@@ -97,7 +97,7 @@ const Projects = () => {
             </div>
 
             <a
-              className="flex items-center gap-2 cursor-pointer text-white-600"
+              className="flex text-white items-center gap-2 cursor-pointer text-white-600"
               href={currentProject.href}
               target="_blank"
               rel="noreferrer"
