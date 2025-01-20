@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import { useCallback, useRef, useState } from "react"
+import { useCallback, useRef, useState ,useEffect} from "react"
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Text, useGLTF, useTexture } from "@react-three/drei"
 import { Physics, RigidBody, CylinderCollider, CuboidCollider, BallCollider } from "@react-three/rapier"
@@ -9,7 +9,7 @@ import clamp from "lodash-es/clamp"
 import { easing } from "maath"
 import pingSound from "./resources/ping.mp3"
 import logo from "./resources/crossp.jpg"
-import bg from "./resources/bg.jpg"
+import bg from "./resources/bg2.jpg"
 
 const ping = new Audio(pingSound)
 const state = proxy({
@@ -25,10 +25,11 @@ const state = proxy({
   },
 })
 
-export default function PhongGame3({ ready }) {
+export default function PhongGame3({ ready, reCount = () => {}}) {
     const [gameStarted, setGameStarted] = useState(false);
     const [gameOver, setGameOver] = useState(false);
-  
+    const { count } = useSnapshot(state); // ใช้ useSnapshot เพื่อเข้าถึงค่า count
+
     const startGame = () => {
       setGameStarted(true);
       setGameOver(false);
@@ -41,6 +42,7 @@ export default function PhongGame3({ ready }) {
     };
   
     return (
+      
         <div className="w-[800] h-[600] bg-gray-900 p-4 gap-4 flex justify-center items-center">
         {/* Game Canvas Area */}
         <div className="bg-slate-700 rounded-lg shadow-lg relative overflow-hidden w-[500px] h-[650px]">
@@ -80,7 +82,7 @@ export default function PhongGame3({ ready }) {
             />
             <Physics gravity={[0, -40, 0]} timeStep="vary">
               {gameStarted && <Ball position={[0, 5, 0]} onGameOver={handleGameOver} />}
-              {gameStarted && <Paddle />}
+              {gameStarted && <Paddle sumCount={reCount}/>}
             </Physics>
             <EffectComposer disableNormalPass>
               <N8AO aoRadius={0.5} intensity={2} />
@@ -94,7 +96,7 @@ export default function PhongGame3({ ready }) {
     );
   }
 
-function Paddle({ vec = new THREE.Vector3(), dir = new THREE.Vector3() }) {
+function Paddle({ vec = new THREE.Vector3(), dir = new THREE.Vector3(), sumCount }) {
     const api = useRef()
     const model = useRef()
   const { count } = useSnapshot(state)
@@ -102,7 +104,8 @@ function Paddle({ vec = new THREE.Vector3(), dir = new THREE.Vector3() }) {
   const contactForce = useCallback((payload) => {
     state.api.pong(payload.totalForceMagnitude / 100)
     model.current.position.y = -payload.totalForceMagnitude / 10000
-  }, [])
+    sumCount(1);
+  }, [sumCount])
   useFrame((state, delta) => {
     vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera)
     dir.copy(vec).sub(state.camera.position).normalize()

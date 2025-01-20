@@ -4,6 +4,7 @@ import { useState } from "react"
 import IntroPhong from "./GAME/PingPong/Intro"
 import PhongGame3 from "./GAME/PhongGame3/PhongGame3";
 import { motion } from "framer-motion";
+import { FaGithub, FaEnvelope, FaFilePdf } from 'react-icons/fa'; // เพิ่มไอคอนที่ต้องการจาก react-icons
 import styled, { keyframes } from "styled-components";
 import { get } from "lodash-es";
 
@@ -13,13 +14,13 @@ const ButtonContainer = styled.div`
 `;
 
 const ButtonLink = styled.a`
-  color: white;
+  color: ${({ enabled }) => (enabled ? 'white' : 'black')};
   font-family: Helvetica, sans-serif;
   font-weight: bold;
   font-size: 18px; /* ลดขนาดฟอนต์ */
   text-align: center;
   text-decoration: none;
-  background-color: #ffa12b;
+  background-color: ${({ enabled }) => (enabled ? '#ffa12b' : '#D3D3D3')};
   display: block;
   position: relative;
   padding: 6px 10px; /* ลดขนาด padding */
@@ -31,16 +32,29 @@ const ButtonLink = styled.a`
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    background-color: #ffc864; /* เปลี่ยนสีปุ่ม */
-    box-shadow: 0 0 15px 5px rgba(255, 255, 200, 0.8); /* เพิ่มแสงแบบ Glow */
-    transform: scale(1.05); /* ขยายเล็กน้อย */
+    background-color: ${({ enabled }) => (enabled ? '#ffc864' : '#D3D3D3')}; /* เปลี่ยนสีปุ่ม */
+    box-shadow: ${({ enabled }) => (enabled ? '0 0 15px 5px rgba(255, 255, 200, 0.8)' : 'none')}; /* เพิ่มแสงแบบ Glow */
+    transform: ${({ enabled }) => (enabled ? 'scale(1.05)' : 'none')}; /* ขยายเล็กน้อย */
   }
-    
+
   &:active {
     top: 8px;
-    background-color: #f78900;
+    background-color: ${({ enabled }) => (enabled ? '#f78900' : '#D3D3D3')};
     box-shadow: inset 0 1px 0 #ffe5c4, inset 0 -3px 0 #915100;
   }
+
+  pointer-events: ${({ enabled }) => (enabled  ? 'auto':'none')}; /* ป้องกันไม่ให้คลิกเมื่อไม่สามารถใช้งาน */
+`;
+
+const IconContainer = styled.div`
+  position: absolute;
+  top: ${({ enabled }) => (enabled ? '5px' : '7px')};
+  left: ${({ position }) => position}%;
+  transform: translateX(-50%);
+  font-size: ${({ enabled }) => (enabled ? '20px' : '15px')};
+  z-index: 5;
+  color: ${({ enabled }) => (enabled ? '#ffa12b' : '#D3D3D3')};
+  transition: color 0.2s ease-in-out;
 `;
 
 const ButtonShadow = styled.div`
@@ -242,28 +256,41 @@ const AboutMe = () => {
             }}>
     
             {/* Zelda-Themed Buttons */}
-            <ButtonContainer>
+            <ButtonContainer >
               <ButtonLink href="https://github.com/GeekOnly?tab=repositories" 
-              target="_blank" rel="noopener noreferrer">Github</ButtonLink>
+              target="_blank" rel="noopener noreferrer" enabled={count > 30}>Github</ButtonLink>
               <ButtonShadow />
             </ButtonContainer>
+
             {/* Contact Button */}
             <ButtonContainer>
-              <ButtonLink href="mailto:SanphetSomjit@gmail.com">Contact</ButtonLink>
+              <ButtonLink href="mailto:sanphetsomjit@gmail.com" enabled={count > 60}>Contact</ButtonLink>
               <ButtonShadow />
             </ButtonContainer>
+
             {/* CV Button */}
             <ButtonContainer>
               <ButtonLink 
               href="https://drive.google.com/file/d/1t_nE7JO7F5hiEhXaZh5a25ogMoMe2FBB/view?usp=sharing"
-              target="_blank" rel="noopener noreferrer">CV</ButtonLink>
+              target="_blank" rel="noopener noreferrer" enabled={count > 100}>CV</ButtonLink>
               <ButtonShadow />
             </ButtonContainer>
            </div>
 
            <div className="absolute" style={{ position: 'relative' }}>
-           <Meter>
-              <Fill style={{ width: `${100}%` }}>
+            <Meter>
+              {/* ไอคอน GitHub, Email, CV จะถูกวางที่ตำแหน่งตามค่า count */}
+              <IconContainer position={30} enabled={count > 30}>
+                <FaGithub />
+              </IconContainer>
+              <IconContainer position={60} enabled={count > 60}>
+                <FaEnvelope />
+              </IconContainer>
+              <IconContainer position={100} enabled={count > 100}>
+                <FaFilePdf />
+              </IconContainer>
+      
+              <Fill style={{ width: `${count}%` }}>
                 <Stripes />
               </Fill>
             </Meter>
@@ -339,8 +366,7 @@ const AboutMe = () => {
         {/* GAME */}
         <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800">
           <div className="w-full h-full overflow-hidden sm:block hidden">
-            <h1>{count}</h1>
-             <PhongGame3 ready={true}/>
+             <PhongGame3 ready={true} reCount={getCount}/>
           </div>
         </div>
 
