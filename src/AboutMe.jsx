@@ -158,34 +158,34 @@ const AboutMe = () => {
 
         {/* Skills */}
         <div className="sm:col-span-2 sm:row-span-4 sm:col-start-1 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
-        <h3 className="text-6xl font-semibold text-gray-300 mt-2 mb-3">Skills</h3>
-        <ul className="text-sm text-gray-300 list-disc pl-4 space-y-2">
-          <li><strong>Programming Languages:</strong> C++, C#, Go, JavaScript</li>
-          <li><strong>Game Engines:</strong> Unity, Unreal Engine</li>
-          <li><strong>Tech Art:</strong> Unreal Material/Niagara, Unity ShaderGraph, UnityCG, VFX Graph, HLSL</li>
-          <li><strong>Game Development Skills:</strong>
-            <ul className="list-disc pl-4 space-y-1">
-              <li><strong>Multiplayer Systems:</strong> Design and implementation of real-time multiplayer functionality.</li>
-              <li><strong>Flecs ECS:</strong> Experience with Entity Component System architecture using Flecs.</li>
-              <li><strong>Game Design Patterns:</strong> Command, Singleton, OOP for structuring game systems.</li>
-              <li><strong>Game AI and Animation Technical:</strong> Designing AI behaviors and animation blending techniques.</li>
-              <li><strong>Physics Programming:</strong> 2D/3D physics engines, SAT Collision Detection, Spatial Hashing.</li>
-            </ul>
-          </li>
-          <li><strong>Graphics API:</strong>
-            <ul className="list-disc pl-4 space-y-1">
-              <li><strong>OpenGL:</strong> Graphics rendering API used for cross-platform graphics applications.</li>
-              <li><strong>Vulkan:</strong> Low-level graphics API offering high performance and control over the GPU.</li>
-              <li><strong>Three.js:</strong> JavaScript library for 3D graphics in the web browser, built on top of WebGL.</li>
-              <li><strong>Fiber React:</strong> A React library for building high-performance user interfaces, with a focus on animation.</li>
-            </ul>
-          </li>
-          <li><strong>3D Tools:</strong> Maya, Houdini, ZBrush, Blender</li>
-          <li><strong>Adobe Tools:</strong> Photoshop, After Effects, Lightroom, Substance 3D Painter</li>
-          <li><strong>Version Control:</strong> GitHub, GitLab, Git Desktop, Git Fork</li>
-          <li><strong>Databases:</strong> PostgreSQL</li>
-          <li><strong>Web Development:</strong> React, Node.js</li>
-        </ul>
+          <h3 className="text-6xl font-semibold text-gray-300 mt-2 mb-3">Skills</h3>
+          <ul className="text-sm text-gray-300 list-disc pl-4 space-y-2">
+            <li><strong>Programming Languages:</strong> C++, C#, Go, JavaScript</li>
+            <li><strong>Game Engines:</strong> Unity, Unreal Engine</li>
+            <li><strong>Tech Art:</strong> Unreal Materials/Niagara, Unity ShaderGraph, UnityCG, VFX Graph, HLSL</li>
+            <li><strong>Game Development Expertise:</strong>
+              <ul className="list-disc pl-4 space-y-1">
+                <li><strong>Multiplayer Systems:</strong> Design and implement real-time multiplayer features.</li>
+                <li><strong>Flecs ECS:</strong> Proficient in Entity-Component-System architecture with Flecs.</li>
+                <li><strong>Game Design Patterns:</strong> Expertise in Command, Singleton, and Object-Oriented Programming (OOP) patterns.</li>
+                <li><strong>Game AI and Animation:</strong> Design complex AI behaviors and animation blending techniques.</li>
+                <li><strong>Physics Programming:</strong> Worked with 2D/3D physics engines, SAT Collision Detection, and Spatial Hashing algorithms.</li>
+              </ul>
+            </li>
+            <li><strong>Graphics APIs:</strong>
+              <ul className="list-disc pl-4 space-y-1">
+                <li><strong>OpenGL:</strong> Cross-platform graphics rendering API.</li>
+                <li><strong>Vulkan:</strong> Low-level, high-performance graphics API for fine control over the GPU.</li>
+                <li><strong>Three.js:</strong> JavaScript library for creating 3D graphics in the web browser using WebGL.</li>
+                <li><strong>Fiber React:</strong> High-performance React library focused on animation and UI rendering.</li>
+              </ul>
+            </li>
+            <li><strong>3D Software:</strong> Maya, Houdini, ZBrush, Blender</li>
+            <li><strong>Adobe Suite:</strong> Photoshop, After Effects, Lightroom, Substance 3D Painter</li>
+            <li><strong>Version Control:</strong> GitHub, GitLab, Git Desktop, Git Fork</li>
+            <li><strong>Databases:</strong> PostgreSQL</li>
+            <li><strong>Web Development:</strong> React, Node.js</li>
+          </ul>
         </div>
 
         {/* Work Experience */}
@@ -193,7 +193,9 @@ const AboutMe = () => {
           <h3 className="text-lg font-semibold text-gray-300 mt-2 mb-2">Work Experience</h3>
           {/* CORECELL Internship */}
           <div>
-            <h4 className="text-md font-semibold text-gray-300">CORECELL Internship Aug - Dec 2020</h4>
+            <h4 className="text-md font-semibold text-gray-300 hover:text-yellow-400 hover:text-shadow-lg hover:cursor-pointer transition duration-200 ease-in-out"> 
+              <a href="https://www.corecell.co.th/"
+              target="_blank" rel="noopener noreferrer">CORECELL Internship Aug - Dec 2020</a></h4>
             <p className="text-sm text-gray-300">
               <strong>Anime Shader Research</strong>
             </p>
@@ -204,7 +206,9 @@ const AboutMe = () => {
     
           {/* The Monk Games */}
           <div className="mt-4">
-            <h4 className="text-md font-semibold text-gray-300">THE MONK GAMES CO., LTD</h4>
+          <h4 className="text-md font-semibold text-gray-300 hover:text-yellow-400 hover:text-shadow-lg hover:cursor-pointer transition duration-200 ease-in-out"> 
+          <a href="https://drive.google.com/file/d/1kEWDW5dnfjAJX0SjEI3ypfRp-k4PCRpn/view?usp=sharing"
+              target="_blank" rel="noopener noreferrer">THE MONK GAMES CO., LTD Nov 2023 - Dec 2024</a></h4>
             <p className="text-sm text-gray-300">
               <strong>Unreal Game Developer Internship</strong>
             </p>
@@ -356,10 +360,14 @@ const AboutMe = () => {
         <div className="sm:col-start-5 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
           <h3 className="text-lg font-semibold text-gray-300 mt-2">Education</h3>
           <p className="text-sm text-gray-300 mt-2">
-            <strong>SPU</strong> BA.Interactive and Game Design
+            <strong className="text-gray-300 hover:text-yellow-400 hover:text-shadow-lg hover:cursor-pointer transition duration-200 ease-in-out">
+               <a href="https://www.spu.ac.th/digitalmedia/interactive-and-game/" target="_blank" rel="noopener noreferrer">SPU</a>
+            </strong> BA.Interactive and Game Design
           </p>
-          <p className="text-sm text-gray-300 mt-2">
-            <strong>NETC</strong> Dip.Computer Technology
+          <p  className="text-sm text-gray-300 mt-2">
+            <strong className="text-gray-300 hover:text-yellow-400 hover:text-shadow-lg hover:cursor-pointer transition duration-200 ease-in-out">
+              <a href="https://www.netc.ac.th/" target="_blank" rel="noopener noreferrer">NETC</a>
+            </strong> Dip.Computer Technology
           </p>
         </div>
 
