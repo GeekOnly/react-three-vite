@@ -8,6 +8,36 @@
       "tags": ["Tech", "React"],
       "url": "https://example.com",
       "youtube":"https://www.youtube.com/@Theghostradio"
+    },
+    {
+      "id": 1,
+      "name": "Bookmark 1",
+      "description": "Description for bookmark 1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/Test.avif",
+      "tags": ["Tech", "React"],
+      "url": "https://example.com",
+      "youtube":"https://www.youtube.com/@Theghostradio"
+    },
+    {
+      "id": 1,
+      "name": "Bookmark 1",
+      "description": "Description for bookmark 1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/Test.avif",
+      "tags": ["Tech", "React"],
+      "url": "https://example.com",
+      "youtube":"https://www.youtube.com/@Theghostradio"
+    },
+    {
+      "id": 1,
+      "name": "Bookmark 1",
+      "description": "Description for bookmark 1",
+      "hoverImage":"https://res.cloudinary.com/dbi6nblbz/image/upload/f_auto,q_auto/Card-Version1",
+      "image": "/assets/Test.avif",
+      "tags": ["Tech", "React"],
+      "url": "https://example.com",
+      "youtube":"https://www.youtube.com/@Theghostradio"
     }
   ]
   

@@ -190,9 +190,14 @@ const BookmarkList = () => {
       )}
 
       {/* Bookmark Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mt-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-6">
         {currentBookmarks.map((bookmark) => (
-          <BookmarkCard key={bookmark.id} bookmark={bookmark} onClick={() => handleReadMore(bookmark)} />
+          <BookmarkCard
+            key={bookmark.id}
+            bookmark={bookmark}
+            onClick={() => handleReadMore(bookmark)}
+            className="p-1 sm:p-4 lg:p-6 m-2" // เพิ่ม margin เพื่อเว้นระยะห่าง
+          />
         ))}
       </div>
 

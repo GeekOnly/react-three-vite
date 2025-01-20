@@ -1,38 +1,40 @@
 /* Card Container */
 .card {
-    height: 300px; 
-    width: 290px;
-    position: relative;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* GIF Background */
-  .card-image {
-    height: 65%; 
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.5s ease;
-  }
-  
-  .card:hover .card-image {
-    transform: scale(1.1);
-  }
-  
-  /* Description Section */
-  .card-description {
+  height: 300px; 
+  width: 100%; /* ใช้ความกว้าง 100% ของคอนเทนเนอร์ */
+  max-width: 290px; /* จำกัดความกว้างสูงสุดที่ 290px */
+  position: relative;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto; /* ให้อยู่ตรงกลาง */
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* GIF Background */
+.card-image {
+  height: 65%; 
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.1);
+}
+
+/* Description Section */
+.card-description {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* จัดให้อยู่ที่ด้านบน */
+  justify-content: flex-start;
   align-items: flex-start;
   background-color: #f2f2f2;
   color: #333333;
@@ -40,84 +42,134 @@
   height: 35%; 
   box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  flex-grow: 1; /* เพิ่มให้ช่องว่างในส่วนนี้ถูกจัดการดีขึ้น */
+  flex-grow: 1;
 }
-  
+
 .text-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin: 0;
-    margin-bottom: -8px; /* เพิ่ม margin ด้านล่างเพื่อไม่ให้ติดขอบ */
-  }
-  
-  .text-body {
-    font-size: 0.9rem;
-    margin-top: 8px;
-    line-height: 1.4;
-    color: #555555;
-  }
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: -8px;
+}
 
-  /* Button Style */
-  .card-button {
-    position: absolute;
-    top: -180px;
-    right: 10px;
-    background-color: #4caf50;
-    color: white;
-    font-size: 0.8rem;
-    padding: 8px 12px;
-    border-radius: 20px;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
+.text-body {
+  font-size: 0.9rem;
+  margin-top: 8px;
+  line-height: 1.4;
+  color: #555555;
+}
 
-  .card-button:hover {
-    background-color: #45a049;
-    transform: scale(1.1);
-  }
+/* Button Style */
+.card-button {
+  position: absolute;
+  top: -180px;
+  right: 10px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-  /* Tags Container */
+.card-button:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
+}
+
+/* Tags Container */
 .tags-container {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap; /* Allow tags to wrap if they overflow */
-    gap: 8px; /* Spacing between tags */
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Tag Style */
+.tag {
+  background-color: #f0f0f0;
+  color: #555555;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Section สำหรับปุ่ม */
+.action-buttons {
+  display: flex;
+  position: relative;
+  top: -50px;
+  left: 190px;
+  gap: 20px;
+}
+
+/* ปุ่มไอคอน Link */
+.action-button {
+  color: #c50707;
+  font-size: 36px;
+  transform: scale(2);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.action-button:hover {
+  transform: scale(2.2);
+}
+
+/* Responsive Design สำหรับมือถือ */
+@media (max-width: 768px) {
+  /* ปรับขนาดการ์ด */
+  .card {
+    height: 200px;
+    max-width: 100%;
   }
   
-  /* Tag Style */
+  .card-description {
+    height: 40%; /* ปรับความสูงให้การ์ดมีการแสดงผลได้ดีขึ้น */
+  }
+
+  /* ปรับขนาดตัวอักษร */
+  .text-title {
+    font-size: 1rem;
+    margin-top: -4px;
+    line-height: 10px;
+  }
+
+  .text-body {
+    font-size: 0.7rem;
+    margin-top: 10px;
+    line-height: 1;
+  }
+
+  .action-buttons {
+    position: relative;
+    top: -200px;
+    left: 70px;
+    gap: 20px; /* ลดช่องว่างระหว่างปุ่ม */
+  }
+
+  .tags-container {
+    height: 50%;
+    max-width: 75%;
+    margin-top: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
   .tag {
     background-color: #f0f0f0;
     color: #555555;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     padding: 4px 8px;
     border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
-  
-  /* Section สำหรับปุ่ม */
-  .action-buttons {
-    display: flex;
-    position: relative;
-    top: -50px;
-    left: 190px;
-    gap: 20px; /* ช่องว่างระหว่างปุ่ม */
-  }
-  
-  /* ปุ่มไอคอน Link */
-  .action-button {
-    color: #c50707; /* สีของไอคอน */
-    font-size: 36px;
-    transform: scale(2);
-    text-decoration: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  
-  .action-button:hover {
-    transform: scale(2.2);
-  }
-  
+}

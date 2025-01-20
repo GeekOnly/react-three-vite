@@ -4,18 +4,8 @@ import { useState } from "react"
 import IntroPhong from "./GAME/PingPong/Intro"
 import PhongGame3 from "./GAME/PhongGame3/PhongGame3";
 import { motion } from "framer-motion";
-import styled from "styled-components";
-
-const Body = styled.div`
-  text-align: center;
-  background-color: #ffcc8e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 100px; /* ระยะห่างระหว่างปุ่ม */
-  padding: 300px;
-`;
+import styled, { keyframes } from "styled-components";
+import { get } from "lodash-es";
 
 const ButtonContainer = styled.div`
   position: relative;
@@ -64,6 +54,76 @@ const ButtonShadow = styled.div`
   z-index: -1;
   background-color: #2b1800;
   border-radius: 5px;
+`;
+
+// Animation for the striped background
+const move = keyframes`
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+`;
+
+// Container for the progress meter
+const Meter = styled.div`
+  box-sizing: content-box;
+  height:10px;
+  position: absolute; /* Positioned absolutely within the parent */
+  top: 5px; /* Adjust as needed */
+  left: 0; /* Adjust as needed */
+  right: 0; /* Adjust as needed */
+  border-radius: 25px;
+  padding: 10px;
+`;
+
+// The fill part of the meter (the actual progress bar)
+const Fill = styled.span`
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: rgb(43, 194, 83);
+  background-image: linear-gradient(
+    center bottom,
+    rgb(43, 194, 83) 37%,
+    rgb(84, 240, 84) 69%
+  );
+  box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+`;
+
+// Striped animation overlay for the progress fill
+const Stripes = styled.span`
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+  z-index: 1;
+  background-size: 50px 50px;
+  animation: ${move} 2s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
 `;
 
 const AboutMe = () => {
@@ -189,7 +249,7 @@ const AboutMe = () => {
             </ButtonContainer>
             {/* Contact Button */}
             <ButtonContainer>
-              <ButtonLink href="#">Contact</ButtonLink>
+              <ButtonLink href="mailto:SanphetSomjit@gmail.com">Contact</ButtonLink>
               <ButtonShadow />
             </ButtonContainer>
             {/* CV Button */}
@@ -200,25 +260,68 @@ const AboutMe = () => {
               <ButtonShadow />
             </ButtonContainer>
            </div>
+
+           <div className="absolute" style={{ position: 'relative' }}>
+           <Meter>
+              <Fill style={{ width: `${100}%` }}>
+                <Stripes />
+              </Fill>
+            </Meter>
+           </div>
+            
           </div>
       
         {/* Passion */}
         <div className="sm:col-span-2 sm:col-start-3 sm:row-start-5 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
-        <h2 className="text-xl font-bold text-gray-300 mt-2">Personal Projects</h2>
-           <p className="text-sm text-gray-300 mt-2">
-            <li>SPU Game Thesis</li>
-            <li>Unity Mini Game</li>
-            <li>MMO Unity Game With Custom Server</li>
-            <li>Web Application</li>
-           </p>
-        
-        </div>
+         <h2 className="text-2xl font-bold text-gray-300 absolute -mt-5">Learning</h2>
+           <div className="grid grid-cols-4 gap-5 text-sm text-gray-300 mt-4">
+             <div>
+               <h5 className="font-semibold">Game Dev</h5>
+               <ul>
+                 <li>Unity</li>
+                 <li>Unreal</li>
+                 <li>Bevy</li>
+                 <li>Open Source</li>
+               </ul>
+             </div>
+         
+             <div>
+               <h5 className="font-semibold">Tech Art</h5>
+               <ul>
+                 <li>VFX Grpah, Niagara</li>
+                 <li>Shader, Material</li>
+                 <li>Procedural Tool</li>
+               </ul>
+             </div>
+         
+             <div>
+               <h5 className="font-semibold">Development</h5>
+               <ul>
+                 <li>Own Game Engine</li>
+                 <li>Multiplayer SDK</li>
+                 <li>Graphics API</li>
+                 <li>Game Server</li>
+               </ul>
+             </div>
+
+             <div>
+               <h5 className="font-semibold">Full Stack</h5>
+               <ul>
+                 <li>React</li>
+                 <li>Node.js, Go, Rust</li>
+                 <li>PostgreSQL</li>
+               </ul>
+             </div>
+         
+           </div>
+         </div>
+
 
         {/* Personal Projects */}
         <div className="sm:col-start-6 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
         <h2 className="text-xl font-bold text-gray-300 mt-2">Passion</h2>
            <p className="text-sm text-gray-300 mt-2">
-             - Creating Game anything and anymore.<br/>
+             <a>Creating Game anything and anymore.<br/></a>
            </p>
         </div>
 
@@ -226,16 +329,17 @@ const AboutMe = () => {
         <div className="sm:col-start-5 sm:row-start-1 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800 hover:opacity-90">
           <h3 className="text-lg font-semibold text-gray-300 mt-2">Education</h3>
           <p className="text-sm text-gray-300 mt-2">
-            <strong>SPU</strong> Interactive and Game Design
+            <strong>SPU</strong> BA.Interactive and Game Design
           </p>
           <p className="text-sm text-gray-300 mt-2">
-            <strong>NETC</strong> Computer Technology
+            <strong>NETC</strong> Dip.Computer Technology
           </p>
         </div>
 
         {/* GAME */}
         <div className="sm:col-span-2 sm:row-span-4 sm:col-start-5 sm:row-start-2 bg-slate-900 rounded-lg shadow-lg p-4 hover:bg-slate-800">
           <div className="w-full h-full overflow-hidden sm:block hidden">
+            <h1>{count}</h1>
              <PhongGame3 ready={true}/>
           </div>
         </div>
